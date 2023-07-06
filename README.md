@@ -44,7 +44,7 @@ Tabel alamat
 - mariaDb
 - Template AdminLTe
 - Pas data tampil via dataTables mke ajax. Biar kena konsep client side.
-- tambah ubah hapus juga mke ajax
+- tambah ubah hapus juga mke ajax <a href="docs/konsep_ajax.md">Cara memanfaatkan fitur ajax menggunakan CodeIgniter</a>
 - bagian view. Coba cari cara blade laravel on codeigniter
 - coba perhatiin ada kolom status data, create, update, delete. Nahh skrng gimna
   - cara nya pas dihapus data ttp ada. (soft delete)

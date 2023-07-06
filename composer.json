@@ -7,7 +7,7 @@
     "require": {
         "php": "^7.4 || ^8.0",
         "codeigniter4/framework": "^4.0",
-        "jenssegers/blade": "*"
+        "jenssegers/blade": "^1.1"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9",
