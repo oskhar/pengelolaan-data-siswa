@@ -61,7 +61,10 @@ class Autoload extends AutoloadConfig
      *
      * @var array<string, string>
      */
-    public $classmap = [];
+    public $classmap = [
+        // Menambahkan blade laravel pada project
+        'Jenssegers\Blade\Blade',
+    ];
 
     /**
      * -------------------------------------------------------------------
@@ -93,5 +96,5 @@ class Autoload extends AutoloadConfig
      * @var string[]
      * @phpstan-var list<string>
      */
-    public $helpers = [];
+    public $helpers = [ 'blade' ];
 }

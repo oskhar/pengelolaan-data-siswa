@@ -72,5 +72,6 @@ class Modules extends BaseModules
         'registrars',
         'routes',
         'services',
+        'Blade' => Jenssegers\Blade\Blade::class,
     ];
 }

@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Controllers;
+use Jenssegers\Blade\Blade;
 
 class Dashboard extends BaseController
 {
     public function index()
     {
-        return view('dashboard');
+        return blade_view('dashboard', ['tes' => 'isi data']);
     }
 }
