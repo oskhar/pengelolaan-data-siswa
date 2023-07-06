@@ -1,44 +1,16 @@
-### Project untuk pelatihan awal
+## PROJECT AWAL
 
 Project dengan Framework CodeIgniter serta diintegrasikan dengan adminLTE template dan dengan blade template engine laravel
 
-### Arsitektur database
+### ARSITEKTUR DATABASE
 
-Tabel Data Siswa
+Desain arsitektur sederhana dari database yang akan digunakan dalam projek ini
 
-- id
-- nis
-- nisn
-- nama
-- gender
-- agama
-- no_telp
-- nama_ayah
-- nama_ibu
-- status_anak
-- status_data (aktif/tidak aktif)
-- created_at (date, default now)
-- update_at (date, default null)
-- delete_at (date, default null)
+#### Conceptual Data Model
 
-Tabel data_kelahiran
+Tahap pertama pembuatan
 
-- id
-- tempat
-- hari
-- bulan
-- tahun
-
-Tabel alamat
-
-- id
-- jalan
-- kecamatan
-- kelurahan
-- kota
-- provinsi
-
-### Rule
+### RULE
 
 - framework CI 4
 - mariaDb
