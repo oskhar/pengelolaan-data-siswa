@@ -9,48 +9,14 @@ Desain arsitektur sederhana dari database yang akan digunakan dalam projek ini
 #### Conceptual Data Model
 
 Tahap pertama pembuatan arsitektur data base yang terdiri dari konsep konsep atau cetak kasar dari struktur desain
+
 <img src='docs/images/Conceptual-Data-Model.png'>
 
 #### Logical Data Model
 
 Pengembangan lebih lanjut dari conceptual data model di atas
 
-##### Tabel siswa
-
-| Column      | Type Data |
-| ----------- | --------- |
-| nis         | varchar   |
-| nisn        | varchar   |
-| nama        | varchar   |
-| gender      | boolean   |
-| agama       | varchar   |
-| no_telp     | varchar   |
-| nama_ayah   | varchar   |
-| nama_ibu    | varchar   |
-| status_anak | boolean   |
-| status_data | boolean   |
-| create_at   | datetime  |
-| update_at   | datetime  |
-| delete_at   | datetime  |
-
-##### Tabel alamat
-
-| Column    | Type Data |
-| --------- | --------- |
-| jalan     | varchar   |
-| kecamatan | varchar   |
-| kelurahan | varchar   |
-| kota      | varchar   |
-| provinsi  | varchar   |
-
-##### Tabel data_kelahiran
-
-| Column | Type Data |
-| ------ | --------- |
-| tempat | varchar   |
-| hari   | varchar   |
-| bulan  | varchar   |
-| tahun  | varchar   |
+<img src='docs/images/Logical-Data-Model.webp'>
 
 #### Physical Data Model
 
