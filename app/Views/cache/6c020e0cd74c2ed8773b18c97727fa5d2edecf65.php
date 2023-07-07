@@ -1,8 +1,10 @@
 <?php $__env->startSection('title', 'Halaman Dashboard'); ?>
 <?php $__env->startSection('mainContent'); ?>
+    
     <link rel="stylesheet" href="adminLTE/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="adminLTE/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <link rel="stylesheet" href="adminLTE/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <div class="container-fluid">
@@ -26,19 +28,27 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">DataTable with default features</h3>
+                        <h3 class="card-title">Tabel data siswa</h3>
+                    </div>
+                    <div class="card-header">
+                      <div class="col-sm-12 col-md-6">
+                        <form method="post" id="example1_filter" class="dataTables_filter">
+                          <label>Search:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="example1">
+                          </label>
+                        </form>
+                      </div>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
                         <table id="example1" class="table table-bordered table-striped">
                         <thead>
-                        <tr>
-                            <th>Rendering engine</th>
-                            <th>Browser</th>
-                            <th>Platform(s)</th>
-                            <th>Engine version</th>
-                            <th>CSS grade</th>
-                        </tr>
+                            <tr>
+                                <th>Rendering engine</th>
+                                <th>Browser</th>
+                                <th>Platform(s)</th>
+                                <th>Engine version</th>
+                                <th>CSS grade</th>
+                            </tr>
                         </thead>
                         <tbody>
                         </tbody>

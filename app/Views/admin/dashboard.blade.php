@@ -2,9 +2,11 @@
 
 @section('title', 'Halaman Dashboard')
 @section('mainContent')
+    
     <link rel="stylesheet" href="adminLTE/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="adminLTE/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <link rel="stylesheet" href="adminLTE/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <div class="container-fluid">
@@ -29,6 +31,14 @@
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">Tabel data siswa</h3>
+                    </div>
+                    <div class="card-header">
+                      <div class="col-sm-12 col-md-6">
+                        <form method="post" id="example1_filter" class="dataTables_filter">
+                          <label>Search:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="example1">
+                          </label>
+                        </form>
+                      </div>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">

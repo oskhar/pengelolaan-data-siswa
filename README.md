@@ -4,7 +4,7 @@ Project dengan Framework CodeIgniter serta diintegrasikan dengan adminLTE templa
 
 ### ARSITEKTUR DATABASE
 
-Desain arsitektur sederhana dari database yang akan digunakan dalam projek ini
+Desain arsitektur sederhana dari database yang akan digunakan dalam projek ini, data terdiri dari 3 tabel setelah saya lakukan normalisasi data.
 
 #### Conceptual Data Model
 
