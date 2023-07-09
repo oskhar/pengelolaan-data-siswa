@@ -9,7 +9,7 @@ class DataKelahiran extends Model
     // ...
     protected $table = 'data_kelahiran';
     protected $dateFormat = 'datetime';
-    protected $allowedFields = ['jalan', 'kecamatan', 'kelurahan', 'kota', 'provinsi', 'nis_siswa'];
+    protected $allowedFields = ['tempat', 'hari', 'bulan', 'tahun', 'nis_siswa'];
 
     public function getData()
     {
@@ -22,6 +22,18 @@ class DataKelahiran extends Model
         $result = $this->where('nis_siswa', $target)
             ->first();
         return $result;
+    }
+    public function insertDataPost($data) {
+        // Insert data kelahiran
+        $data_kelahiran = [
+            'id' => 0,
+            'tempat' => $data['tempat_lahir'],
+            'hari' => $data['hari'],
+            'bulan' => $data['bulan'],
+            'tahun' => $data['tahun'],
+            'nis_siswa' => $data['nis'],
+        ];
+        $this->insert($data_kelahiran);
     }
 
 }

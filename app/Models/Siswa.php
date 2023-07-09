@@ -34,5 +34,21 @@ class Siswa extends Model
         $this->where('id', $nis);
         $this->update('users');
     }
+    public function insertDataPost($data) {
+        // Insert data siswa
+        $data_siswa = [
+            'nama' => $data['nama'],
+            'nis' => $data['nis'],
+            'nisn' => $data['nisn'],
+            'agama' => $data['agama'],
+            'no_telp' => $data['no_telp'],
+            'gender' => $data['gender'],
+            'status_anak' => $data['status_anak'],
+            'status_data' => $data['status_data'],
+            'nama_ayah' => $data['nama_ayah'],
+            'nama_ibu' => $data['nama_ibu'],
+        ];
+        $this->insert($data_siswa);
+    }
 
 }
