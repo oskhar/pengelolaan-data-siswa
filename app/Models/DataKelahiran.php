@@ -23,7 +23,7 @@ class DataKelahiran extends Model
             ->first();
         return $result;
     }
-    public function insertDataPost($data) {
+    public function doInsertDataPost($data) {
         // Insert data kelahiran
         $data_kelahiran = [
             'id' => 0,

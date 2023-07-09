@@ -42,7 +42,6 @@
                     <!-- text input -->
                     <div class="form-group">
                     <label for="nis">
-                        <?php if(isset($error)): ?><i class="far fa-times-circle"></i><?php endif; ?>
                         NIS:
                     </label>
                     <input required type="text" class="form-control <?php if(isset($error)): ?> is-invalid <?php endif; ?>" placeholder="Enter ..." id="nis" name="nis">
@@ -52,7 +51,6 @@
                     <!-- text input -->
                     <div class="form-group">
                     <label for="nisn">
-                        <?php if(isset($error)): ?><i class="far fa-times-circle"></i><?php endif; ?>
                         NISN:
                     </label>
                     <input required type="text" class="form-control <?php if(isset($error)): ?> is-invalid <?php endif; ?>" placeholder="Enter ..." id="nisn" name="nisn">
@@ -62,7 +60,6 @@
                     <!-- text input -->
                     <div class="form-group">
                     <label for="agama">
-                        <?php if(isset($error)): ?><i class="far fa-times-circle"></i><?php endif; ?>
                         Agama:
                     </label>
                     <input required type="text" class="form-control <?php if(isset($error)): ?> is-invalid <?php endif; ?>" placeholder="Enter ..." id="agama" name="agama">
@@ -72,7 +69,6 @@
                     <!-- text input -->
                     <div class="form-group">
                     <label for="no_telp">
-                        <?php if(isset($error)): ?><i class="far fa-times-circle"></i><?php endif; ?>
                         Nomor Telepon:
                     </label>
                     <input required type="text" class="form-control <?php if(isset($error)): ?> is-invalid <?php endif; ?>" placeholder="Enter ..." id="no_telp" name="no_telp">
@@ -158,7 +154,6 @@
                     <!-- text input -->
                     <div class="form-group">
                     <label for="jalan">
-                        <?php if(isset($error)): ?><i class="far fa-times-circle"></i><?php endif; ?>
                         Jalan:
                     </label>
                     <input required type="text" class="form-control <?php if(isset($error)): ?> is-invalid <?php endif; ?>" placeholder="Enter ..." id="jalan" name="jalan">
@@ -168,7 +163,6 @@
                     <!-- text input -->
                     <div class="form-group">
                     <label for="kecamatan">
-                        <?php if(isset($error)): ?><i class="far fa-times-circle"></i><?php endif; ?>
                         Kecamatan:
                     </label>
                     <input required type="text" class="form-control <?php if(isset($error)): ?> is-invalid <?php endif; ?>" placeholder="Optional ..." id="kecamatan" name="kecamatan">
@@ -178,7 +172,6 @@
                     <!-- text input -->
                     <div class="form-group">
                     <label for="kelurahan">
-                        <?php if(isset($error)): ?><i class="far fa-times-circle"></i><?php endif; ?>
                         Kelurahan:
                     </label>
                     <input required type="text" class="form-control <?php if(isset($error)): ?> is-invalid <?php endif; ?>" placeholder="Optional ..." id="kelurahan" name="kelurahan">
@@ -188,7 +181,6 @@
                     <!-- text input -->
                     <div class="form-group">
                     <label for="kota">
-                        <?php if(isset($error)): ?><i class="far fa-times-circle"></i><?php endif; ?>
                         Kota:
                     </label>
                     <input required type="text" class="form-control <?php if(isset($error)): ?> is-invalid <?php endif; ?>" placeholder="Enter ..." id="kota" name="kota">
@@ -198,19 +190,18 @@
                     <!-- text input -->
                     <div class="form-group">
                     <label for="provinsi">
-                        <?php if(isset($error)): ?><i class="far fa-times-circle"></i><?php endif; ?>
                         Provinsi:
                     </label>
                     <input required type="text" class="form-control <?php if(isset($error)): ?> is-invalid <?php endif; ?>" placeholder="Enter ..." id="provinsi" name="provinsi">
                     </div>
                 </div>
             </div>
-        </form>
         </div>
         <div class="card-footer">
             <button type="submit" class="btn btn-primary">Submit</button>
         </div>
         <!-- /.card-body -->
+    </div>
     </form>
 </section>
   
@@ -276,6 +267,7 @@ $(document).ready(function() {
       dataType: 'json',
       success: function(response) {
         alert("Data berhasil ditambahkan");
+        window.location.href = "<?php echo e(site_url('dashboard')); ?>";
       },
       error: function(xhr, status, error) {
         alert("Data gagal ditambahkan: " + xhr.status + "\n" + xhr.responseText + "\n" + error);

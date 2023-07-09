@@ -20,145 +20,192 @@
 
 <section class="content row">
 
-    <div class="container-fluid col-sm-8">
-    <!-- general form -->
-    <div class="card card-success">
-        <div class="card-header">
-        <h3 class="card-title">General Elements</h3>
-        </div>
-        <!-- /.card-header -->
-        <div class="card-body">
-        <form method="post" action="">
-            <?= csrf_field() ?>
-            <!-- input states -->
-            <h4>Isi Data Siswa</h4>
-            <div class="form-group">
-                <label class="col-form-label" for="nama">Nama Lengkap:</label>
-                <input required type="text" class="form-control" id="nama" placeholder="Enter ...">
+    <form method="post" id="formIsiData" class="container-fluid col-sm-8">
+        <!-- general form -->
+        <div class="card card-success">
+            <div class="card-header">
+                <h3 class="card-title">General Elements</h3>
             </div>
-            <!-- inline input -->
-            <div class="row">
-                <div class="col-sm-6">
-                    <!-- text input -->
-                    <div class="form-group">
-                    <label for="nis">
-                        <?php if(isset($error)): ?><i class="far fa-times-circle"></i><?php endif; ?>
-                        NIS:
-                    </label>
-                    <input required type="text" class="form-control <?php if(isset($error)): ?> is-invalid <?php endif; ?>" placeholder="Enter ..." id="nis">
-                    </div>
+            <?php if(isset($nis)): ?>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <?= csrf_field() ?>
+                <!-- input states -->
+                <h4>Isi Data Siswa</h4>
+                <div class="form-group">
+                    <label class="col-form-label" for="nama">Nama Lengkap:</label>
+                    <input required type="text" class="form-control" name="nama" id="nama" placeholder="Enter ...">
                 </div>
-                <div class="col-sm-6">
-                    <!-- text input -->
-                    <div class="form-group">
-                    <label for="nisn">
-                        <?php if(isset($error)): ?><i class="far fa-times-circle"></i><?php endif; ?>
-                        NISN:
-                    </label>
-                    <input required type="text" class="form-control <?php if(isset($error)): ?> is-invalid <?php endif; ?>" placeholder="Enter ..." id="nisn">
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <!-- text input -->
-                    <div class="form-group">
-                    <label for="agama">
-                        <?php if(isset($error)): ?><i class="far fa-times-circle"></i><?php endif; ?>
-                        agama:
-                    </label>
-                    <input required type="text" class="form-control <?php if(isset($error)): ?> is-invalid <?php endif; ?>" placeholder="Enter ..." id="agama" name="agama">
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <!-- text input -->
-                    <div class="form-group">
-                    <label for="nisn">
-                        <?php if(isset($error)): ?><i class="far fa-times-circle"></i><?php endif; ?>
-                        nomor telepon:
-                    </label>
-                    <input required type="text" class="form-control <?php if(isset($error)): ?> is-invalid <?php endif; ?>" placeholder="Enter ..." id="nisn">
-                    </div>
-                </div>
-            </div>
-            <!-- inline input -->
-            <div class="row">
-                <div class="col-sm-6">
-                    <!-- radio -->
-                    <div class="form-group">
-                        <h5>Gender</h5>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="Gender" checked>
-                            <label class="form-check-label">Laki-laki</label>
+                <!-- inline input -->
+                <div class="row">
+                    <div class="col-sm-6">
+                        <!-- text input -->
+                        <div class="form-group">
+                        <label for="nis">
+                            NIS:
+                        </label>
+                        <input required type="text" class="form-control <?php if(isset($error)): ?> is-invalid <?php endif; ?>" placeholder="Enter ..." id="nis" name="nis">
                         </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="Gender">
-                            <label class="form-check-label">Perempuan</label>
+                    </div>
+                    <div class="col-sm-6">
+                        <!-- text input -->
+                        <div class="form-group">
+                        <label for="nisn">
+                            NISN:
+                        </label>
+                        <input required type="text" class="form-control <?php if(isset($error)): ?> is-invalid <?php endif; ?>" placeholder="Enter ..." id="nisn" name="nisn">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <!-- text input -->
+                        <div class="form-group">
+                        <label for="agama">
+                            Agama:
+                        </label>
+                        <input required type="text" class="form-control <?php if(isset($error)): ?> is-invalid <?php endif; ?>" placeholder="Enter ..." id="agama" name="agama">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <!-- text input -->
+                        <div class="form-group">
+                        <label for="no_telp">
+                            Nomor Telepon:
+                        </label>
+                        <input required type="text" class="form-control <?php if(isset($error)): ?> is-invalid <?php endif; ?>" placeholder="Enter ..." id="no_telp" name="no_telp">
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-6">
-                    <!-- radio -->
-                    <div class="form-group">
-                        <h5>Status Anak</h5>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="status_anak" checked>
-                            <label class="form-check-label">Masih Pelajar</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="status_anak">
-                            <label class="form-check-label">Sudah Lulus</label>
+                <!-- inline input -->
+                <div class="row">
+                    <div class="col-sm-6">
+                        <!-- radio -->
+                        <div class="form-group">
+                            <h5>Gender</h5>
+                            <div class="form-check">
+                                <input value="1" class="form-check-input" type="radio" name="gender" id="gender" checked>
+                                <label class="form-check-label">Laki-laki</label>
+                            </div>
+                            <div class="form-check">
+                                <input value="0" class="form-check-input" type="radio" name="gender" id="gender">
+                                <label class="form-check-label">Perempuan</label>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <!-- inline input -->
-            <div class="row">
-                <div class="col-sm-6">
-                    <div class="form-group">
-                        <label class="col-form-label" for="nama">Tempat Lahir:</label>
-                        <input required type="text" class="form-control" id="nama" placeholder="Enter ...">
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="form-group">
-                      <label class="col-form-label">Tanggal Lahir:</label>
-                        <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                            <input type="text" class="form-control datetimepicker-input" data-target="#reservationdate"/>
-                            <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
-                                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                    <div class="col-sm-6">
+                        <!-- radio -->
+                        <div class="form-group">
+                            <h5>Status Anak</h5>
+                            <div class="form-check">
+                                <input value="1" class="form-check-input" type="radio" name="status_anak" id="status_anak" checked>
+                                <label class="form-check-label">Masih Pelajar</label>
+                            </div>
+                            <div class="form-check">
+                                <input value="0" class="form-check-input" type="radio" name="status_anak" id="status_anak">
+                                <label class="form-check-label">Sudah Lulus</label>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- inline input -->
-            <div class="row">
-                <div class="col-sm-6">
-                    <!-- radio -->
-                    <div class="form-group">
-                        <h5>Status Data</h5>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="status_data" checked>
-                            <label class="form-check-label">Aktif</label>
+                <h4>Isi Data Kelahiran Siswa</h4>
+                <!-- inline input -->
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="col-form-label" for="tempat_lahir">Tempat Lahir:</label>
+                            <input required type="text" class="form-control" id="tempat_lahir" name="tempat_lahir" placeholder="Enter ...">
                         </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="status_data">
-                            <label class="form-check-label">Tidak Aktif</label>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="col-form-label">Tanggal Lahir:</label>
+                            <div class="input-group date" id="reservationdate" data-target-input="nearest">
+                                <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- inline input -->
+                <div class="row">
+                    <div class="col-sm-6">
+                        <!-- radio -->
+                        <div class="form-group">
+                            <h5>Status Data</h5>
+                            <div class="form-check">
+                                <input value="1" class="form-check-input" type="radio" name="status_data" id="status_data" checked>
+                                <label class="form-check-label">Aktif</label>
+                            </div>
+                            <div class="form-check">
+                                <input value="0" class="form-check-input" type="radio" name="status_data" id="status_data">
+                                <label class="form-check-label">Tidak Aktif</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-form-label" for="nama">Nama Ayah:</label>
+                    <input required type="text" class="form-control" id="nama_ayah" name="nama_ayah" placeholder="Enter ...">
+                    <label class="col-form-label" for="nama">Nama Ibu:</label>
+                    <input required type="text" class="form-control" id="nama_ibu" name="nama_ibu" placeholder="Enter ...">
+                </div>
+                <h4>Isi Alamat Siswa</h4>
+                <!-- inline input -->
+                <div class="row">
+                    <div class="col-sm-6">
+                        <!-- text input -->
+                        <div class="form-group">
+                        <label for="jalan">
+                            Jalan:
+                        </label>
+                        <input required type="text" class="form-control <?php if(isset($error)): ?> is-invalid <?php endif; ?>" placeholder="Enter ..." id="jalan" name="jalan">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <!-- text input -->
+                        <div class="form-group">
+                        <label for="kecamatan">
+                            Kecamatan:
+                        </label>
+                        <input required type="text" class="form-control <?php if(isset($error)): ?> is-invalid <?php endif; ?>" placeholder="Optional ..." id="kecamatan" name="kecamatan">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <!-- text input -->
+                        <div class="form-group">
+                        <label for="kelurahan">
+                            Kelurahan:
+                        </label>
+                        <input required type="text" class="form-control <?php if(isset($error)): ?> is-invalid <?php endif; ?>" placeholder="Optional ..." id="kelurahan" name="kelurahan">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <!-- text input -->
+                        <div class="form-group">
+                        <label for="kota">
+                            Kota:
+                        </label>
+                        <input required type="text" class="form-control <?php if(isset($error)): ?> is-invalid <?php endif; ?>" placeholder="Enter ..." id="kota" name="kota">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <!-- text input -->
+                        <div class="form-group">
+                        <label for="provinsi">
+                            Provinsi:
+                        </label>
+                        <input required type="text" class="form-control <?php if(isset($error)): ?> is-invalid <?php endif; ?>" placeholder="Enter ..." id="provinsi" name="provinsi">
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="form-group">
-                <label class="col-form-label" for="nama">Nama Ayah:</label>
-                <input required type="text" class="form-control" id="nama" placeholder="Enter ...">
-                <label class="col-form-label" for="nama">Nama Ibu:</label>
-                <input required type="text" class="form-control" id="nama" placeholder="Enter ...">
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
             </div>
-            <h4>Isi Alamat Siswa</h4>
-        </form>
+            <?php else: ?>
+             <h3 class="text-center mt-5 mb-5">Pilih data yang ingin anda edit...</h3>
+            <?php endif; ?>
         </div>
         <!-- /.card-body -->
-    </div>
-    </div>
+    </form>
     <div class="container-fluid col-sm-4">
       <div class="row">
         <div class="col-12">

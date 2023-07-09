@@ -30,11 +30,12 @@ class Siswa extends Model
     }
     public function doSoftDelete($nis) {
         // Menghapus lembut pengguna dengan mengatur deleted_at menjadi waktu saat ini
-        $this->set('deleted_at', date('Y-m-d H:i:s'));
-        $this->where('id', $nis);
-        $this->update('users');
+        $this->where('nis', $nis)
+            ->update([
+                'deleted_at' => date('Y-m-d H:i:s')
+            ]);
     }
-    public function insertDataPost($data) {
+    public function doInsertDataPost($data) {
         // Insert data siswa
         $data_siswa = [
             'nama' => $data['nama'],

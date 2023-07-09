@@ -38,9 +38,9 @@ class Dashboard extends BaseController
         $all_data = $this->request->getPost();
 
         // Insert data
-        $this->Siswa->insertDataPost($all_data);
-        $this->Alamat->insertDataPost($all_data);
-        $this->DataKelahiran->insertDataPost($all_data);
+        $this->Siswa->doInsertDataPost($all_data);
+        $this->Alamat->doInsertDataPost($all_data);
+        $this->DataKelahiran->doInsertDataPost($all_data);
 
         // Berikan respons JSON
         $response = [

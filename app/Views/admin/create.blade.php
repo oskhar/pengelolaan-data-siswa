@@ -44,7 +44,6 @@
                     <!-- text input -->
                     <div class="form-group">
                     <label for="nis">
-                        @isset($error)<i class="far fa-times-circle"></i>@endisset
                         NIS:
                     </label>
                     <input required type="text" class="form-control @isset($error) is-invalid @endisset" placeholder="Enter ..." id="nis" name="nis">
@@ -54,7 +53,6 @@
                     <!-- text input -->
                     <div class="form-group">
                     <label for="nisn">
-                        @isset($error)<i class="far fa-times-circle"></i>@endisset
                         NISN:
                     </label>
                     <input required type="text" class="form-control @isset($error) is-invalid @endisset" placeholder="Enter ..." id="nisn" name="nisn">
@@ -64,7 +62,6 @@
                     <!-- text input -->
                     <div class="form-group">
                     <label for="agama">
-                        @isset($error)<i class="far fa-times-circle"></i>@endisset
                         Agama:
                     </label>
                     <input required type="text" class="form-control @isset($error) is-invalid @endisset" placeholder="Enter ..." id="agama" name="agama">
@@ -74,7 +71,6 @@
                     <!-- text input -->
                     <div class="form-group">
                     <label for="no_telp">
-                        @isset($error)<i class="far fa-times-circle"></i>@endisset
                         Nomor Telepon:
                     </label>
                     <input required type="text" class="form-control @isset($error) is-invalid @endisset" placeholder="Enter ..." id="no_telp" name="no_telp">
@@ -160,7 +156,6 @@
                     <!-- text input -->
                     <div class="form-group">
                     <label for="jalan">
-                        @isset($error)<i class="far fa-times-circle"></i>@endisset
                         Jalan:
                     </label>
                     <input required type="text" class="form-control @isset($error) is-invalid @endisset" placeholder="Enter ..." id="jalan" name="jalan">
@@ -170,7 +165,6 @@
                     <!-- text input -->
                     <div class="form-group">
                     <label for="kecamatan">
-                        @isset($error)<i class="far fa-times-circle"></i>@endisset
                         Kecamatan:
                     </label>
                     <input required type="text" class="form-control @isset($error) is-invalid @endisset" placeholder="Optional ..." id="kecamatan" name="kecamatan">
@@ -180,7 +174,6 @@
                     <!-- text input -->
                     <div class="form-group">
                     <label for="kelurahan">
-                        @isset($error)<i class="far fa-times-circle"></i>@endisset
                         Kelurahan:
                     </label>
                     <input required type="text" class="form-control @isset($error) is-invalid @endisset" placeholder="Optional ..." id="kelurahan" name="kelurahan">
@@ -190,7 +183,6 @@
                     <!-- text input -->
                     <div class="form-group">
                     <label for="kota">
-                        @isset($error)<i class="far fa-times-circle"></i>@endisset
                         Kota:
                     </label>
                     <input required type="text" class="form-control @isset($error) is-invalid @endisset" placeholder="Enter ..." id="kota" name="kota">
@@ -200,19 +192,18 @@
                     <!-- text input -->
                     <div class="form-group">
                     <label for="provinsi">
-                        @isset($error)<i class="far fa-times-circle"></i>@endisset
                         Provinsi:
                     </label>
                     <input required type="text" class="form-control @isset($error) is-invalid @endisset" placeholder="Enter ..." id="provinsi" name="provinsi">
                     </div>
                 </div>
             </div>
-        </form>
         </div>
         <div class="card-footer">
             <button type="submit" class="btn btn-primary">Submit</button>
         </div>
         <!-- /.card-body -->
+    </div>
     </form>
 </section>
   
@@ -278,6 +269,7 @@ $(document).ready(function() {
       dataType: 'json',
       success: function(response) {
         alert("Data berhasil ditambahkan");
+        window.location.href = "{{ site_url('dashboard') }}";
       },
       error: function(xhr, status, error) {
         alert("Data gagal ditambahkan: " + xhr.status + "\n" + xhr.responseText + "\n" + error);

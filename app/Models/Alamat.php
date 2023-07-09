@@ -23,7 +23,7 @@ class Alamat extends Model
             ->first();
         return $result;
     }
-    public function insertDataPost($data) {
+    public function doInsertDataPost($data) {
         // Insert data alamat
         $data_alamat = [
             'id' => 0,
