@@ -78,7 +78,7 @@
                         </li>
                     </ul>
 
-                    <a href="#" class="btn btn-primary btn-block"><b>Edit Data:</b></a>
+                    <a href="#" class="btn btn-primary btn-block"><b>Update Data</b></a>
                 </div>
                 <!-- /.card-body -->
         </div>

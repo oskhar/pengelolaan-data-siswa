@@ -22,7 +22,7 @@
 
 <section class="content row">
 
-    <div class="container-fluid col-sm-6">
+    <div class="container-fluid col-sm-8">
     <!-- general form -->
     <div class="card card-success">
         <div class="card-header">
@@ -161,7 +161,7 @@
         <!-- /.card-body -->
     </div>
     </div>
-    <div class="container-fluid col-sm-6">
+    <div class="container-fluid col-sm-4">
       <div class="row">
         <div class="col-12">
             <div class="card">
@@ -181,11 +181,9 @@
                     <table id="example1" class="table table-bordered table-striped">
                     <thead>
                         <tr>
-                            <th>Rendering engine</th>
-                            <th>Browser</th>
-                            <th>Platform(s)</th>
-                            <th>Engine version</th>
-                            <th>CSS grade</th>
+                            <th>NIS</th>
+                            <th>NISN</th>
+                            <th>Nama Lengkap</th>
                         </tr>
                     </thead>
                     <tbody>
