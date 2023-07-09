@@ -21,6 +21,12 @@ class Siswa extends Model
             ->findAll();
         return $result;
     }
+    public function getSpecificData($target)
+    {
+        $result = $this->where('nis', $target)
+            ->first();
+        return $result;
+    }
     public function doSoftDelete($nis) {
         // Menghapus lembut pengguna dengan mengatur deleted_at menjadi waktu saat ini
         $this->set('deleted_at', date('Y-m-d H:i:s'));

@@ -17,62 +17,47 @@
   </div><!-- /.container-fluid -->
 </section>
 <section class="content row">
-    <div class="container-fluid col-sm-10 justify-content-center">
+    <div class="container-fluid col-sm-8 justify-content-center">
             <div class="card card-primary card-outline">
                 <div class="card-body box-profile">
                     <div class="text-center">
                         <img class="profile-user-img img-fluid img-circle" src="dist/img/user6-128x128.jpg" alt="User profile picture">
                     </div>
 
-                    <h3 class="profile-username text-center">Nina Mcintire</h3>
+                    <h3 class="profile-username text-center"><?php echo e($data_siswa['nama']); ?></h3>
 
-                    <p class="text-muted text-center">Software Engineer</p>
+                    <p class="text-muted text-center">NIS <?php echo e($data_siswa['nis']); ?></p>
 
                     <ul class="list-group list-group-unbordered mb-3">
                         <li class="list-group-item">
-                            <b>NISN:</b> <a class="float-right">543</a>
+                            <b>NISN:</b> <span class="float-right"><?php echo e($data_siswa['nisn']); ?></span>
                         </li>
                         <li class="list-group-item">
-                            <b>Gender:</b> <a class="float-right">1,322</a>
+                            <b>Gender:</b> <span class="float-right"><?php echo e(["Perempuan", "Laki Laki"][$data_siswa['gender']]); ?></span>
                         </li>
                         <li class="list-group-item">
-                            <b>Agama:</b> <a class="float-right">543</a>
+                            <b>Agama:</b> <span class="float-right"><?php echo e($data_siswa['agama']); ?></span>
                         </li>
                         <li class="list-group-item">
-                            <b>Nomor Telepon:</b> <a class="float-right">13,287</a>
+                            <b>Nomor Telepon:</b> <span class="float-right"><?php echo e($data_siswa['no_telp']); ?></span>
                         </li>
                         <li class="list-group-item">
-                            <b>Nama Ayah:</b> <a class="float-right">1,322</a>
+                            <b>Nama Ayah:</b> <span class="float-right"><?php echo e($data_siswa['nama_ayah']); ?></span>
                         </li>
                         <li class="list-group-item">
-                            <b>Nama Ibu:</b> <a class="float-right">543</a>
+                            <b>Nama Ibu:</b> <span class="float-right"><?php echo e($data_siswa['nama_ibu']); ?></span>
                         </li>
                         <li class="list-group-item">
-                            <b>Jalan:</b> <a class="float-right">543</a>
+                            <b>Domisilih Jalan:</b> <span class="float-right"><?php echo e($data_alamat['jalan']); ?></span>
                         </li>
                         <li class="list-group-item">
-                            <b>Kecamatan:</b> <a class="float-right">543</a>
+                            <b>Domisilih Detail:</b> <span class="float-right"><?php echo e($data_alamat['kecamatan']); ?>, <?php echo e($data_alamat['kelurahan']); ?>, <?php echo e($data_alamat['kota']); ?>, <?php echo e($data_alamat['provinsi']); ?></span>
                         </li>
                         <li class="list-group-item">
-                            <b>Kelurahan:</b> <a class="float-right">543</a>
+                            <b>Tempat Lahir:</b> <span class="float-right"><?php echo e($data_kelahiran['tempat']); ?></span>
                         </li>
                         <li class="list-group-item">
-                            <b>Kota:</b> <a class="float-right">543</a>
-                        </li>
-                        <li class="list-group-item">
-                            <b>Provinsi:</b> <a class="float-right">543</a>
-                        </li>
-                        <li class="list-group-item">
-                            <b>Tempat Lahir:</b> <a class="float-right">543</a>
-                        </li>
-                        <li class="list-group-item">
-                            <b>Hari Lahir:</b> <a class="float-right">543</a>
-                        </li>
-                        <li class="list-group-item">
-                            <b>Bulan Lahir:</b> <a class="float-right">543</a>
-                        </li>
-                        <li class="list-group-item">
-                            <b>Tahun Lahir:</b> <a class="float-right">543</a>
+                            <b>Tanggal Lahir:</b> <span class="float-right"><?php echo e($data_kelahiran['hari']); ?> <?php echo e($data_kelahiran['bulan']); ?> <?php echo e($data_kelahiran['tahun']); ?></span>
                         </li>
                     </ul>
 

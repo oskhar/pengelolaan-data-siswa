@@ -23,7 +23,7 @@
 </section>
 
 <section class="content row">
-    <div class="container-fluid col-sm-10 justify-content-center">
+    <form method="post" id="formIsiData" class="container-fluid col-sm-10 justify-content-center">
     <!-- general form -->
     <div class="card card-success">
         <div class="card-header">
@@ -31,13 +31,12 @@
         </div>
         <!-- /.card-header -->
         <div class="card-body">
-        <form method="post">
             <?= csrf_field() ?>
             <!-- input states -->
             <h4>Isi Data Siswa</h4>
             <div class="form-group">
                 <label class="col-form-label" for="nama">Nama Lengkap:</label>
-                <input required type="text" class="form-control" id="nama" placeholder="Enter ...">
+                <input required type="text" class="form-control" name="nama" id="nama" placeholder="Enter ...">
             </div>
             <!-- inline input -->
             <div class="row">
@@ -66,7 +65,7 @@
                     <div class="form-group">
                     <label for="agama">
                         @isset($error)<i class="far fa-times-circle"></i>@endisset
-                        agama:
+                        Agama:
                     </label>
                     <input required type="text" class="form-control @isset($error) is-invalid @endisset" placeholder="Enter ..." id="agama" name="agama">
                     </div>
@@ -76,7 +75,7 @@
                     <div class="form-group">
                     <label for="no_telp">
                         @isset($error)<i class="far fa-times-circle"></i>@endisset
-                        nomor telepon:
+                        Nomor Telepon:
                     </label>
                     <input required type="text" class="form-control @isset($error) is-invalid @endisset" placeholder="Enter ..." id="no_telp" name="no_telp">
                     </div>
@@ -89,11 +88,11 @@
                     <div class="form-group">
                         <h5>Gender</h5>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="Gender" checked>
+                            <input class="form-check-input" type="radio" name="gender" id="gender" checked>
                             <label class="form-check-label">Laki-laki</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="Gender">
+                            <input class="form-check-input" type="radio" name="gender" id="gender">
                             <label class="form-check-label">Perempuan</label>
                         </div>
                     </div>
@@ -103,11 +102,11 @@
                     <div class="form-group">
                         <h5>Status Anak</h5>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="status_anak" checked>
+                            <input class="form-check-input" type="radio" name="status_anak" id="status_anak" checked>
                             <label class="form-check-label">Masih Pelajar</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="status_anak">
+                            <input class="form-check-input" type="radio" name="status_anak" id="status_anak">
                             <label class="form-check-label">Sudah Lulus</label>
                         </div>
                     </div>
@@ -118,15 +117,15 @@
             <div class="row">
                 <div class="col-sm-6">
                     <div class="form-group">
-                        <label class="col-form-label" for="nama">Tempat Lahir:</label>
-                        <input required type="text" class="form-control" id="nama" placeholder="Enter ...">
+                        <label class="col-form-label" for="tempat_lahir">Tempat Lahir:</label>
+                        <input required type="text" class="form-control" id="tempat_lahir" name="tempat_lahir" placeholder="Enter ...">
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label class="col-form-label">Tanggal Lahir:</label>
                         <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                            <input type="date" class="form-control datetimepicker-input" data-target="#reservationdate">
+                            <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir">
                         </div>
                     </div>
                 </div>
@@ -138,11 +137,11 @@
                     <div class="form-group">
                         <h5>Status Data</h5>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="status_data" checked>
+                            <input class="form-check-input" type="radio" name="status_data" id="status_data" checked>
                             <label class="form-check-label">Aktif</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="status_data">
+                            <input class="form-check-input" type="radio" name="status_data" id="status_data">
                             <label class="form-check-label">Tidak Aktif</label>
                         </div>
                     </div>
@@ -150,9 +149,9 @@
             </div>
             <div class="form-group">
                 <label class="col-form-label" for="nama">Nama Ayah:</label>
-                <input required type="text" class="form-control" id="nama" placeholder="Enter ...">
+                <input required type="text" class="form-control" id="nama_ayah" name="nama_ayah" placeholder="Enter ...">
                 <label class="col-form-label" for="nama">Nama Ibu:</label>
-                <input required type="text" class="form-control" id="nama" placeholder="Enter ...">
+                <input required type="text" class="form-control" id="nama_ibu" name="nama_ibu" placeholder="Enter ...">
             </div>
             <h4>Isi Alamat Siswa</h4>
             <!-- inline input -->
@@ -160,56 +159,144 @@
                 <div class="col-sm-6">
                     <!-- text input -->
                     <div class="form-group">
-                    <label for="nis">
+                    <label for="jalan">
                         @isset($error)<i class="far fa-times-circle"></i>@endisset
-                        NIS:
+                        Jalan:
                     </label>
-                    <input required type="text" class="form-control @isset($error) is-invalid @endisset" placeholder="Enter ..." id="nis" name="nis">
+                    <input required type="text" class="form-control @isset($error) is-invalid @endisset" placeholder="Enter ..." id="jalan" name="jalan">
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <!-- text input -->
                     <div class="form-group">
-                    <label for="nisn">
+                    <label for="kecamatan">
                         @isset($error)<i class="far fa-times-circle"></i>@endisset
-                        NISN:
+                        Kecamatan:
                     </label>
-                    <input required type="text" class="form-control @isset($error) is-invalid @endisset" placeholder="Enter ..." id="nisn" name="nisn">
+                    <input required type="text" class="form-control @isset($error) is-invalid @endisset" placeholder="Optional ..." id="kecamatan" name="kecamatan">
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <!-- text input -->
                     <div class="form-group">
-                    <label for="agama">
+                    <label for="kelurahan">
                         @isset($error)<i class="far fa-times-circle"></i>@endisset
-                        agama:
+                        Kelurahan:
                     </label>
-                    <input required type="text" class="form-control @isset($error) is-invalid @endisset" placeholder="Enter ..." id="agama" name="agama">
+                    <input required type="text" class="form-control @isset($error) is-invalid @endisset" placeholder="Optional ..." id="kelurahan" name="kelurahan">
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <!-- text input -->
                     <div class="form-group">
-                    <label for="no_telp">
+                    <label for="kota">
                         @isset($error)<i class="far fa-times-circle"></i>@endisset
-                        nomor telepon:
+                        Kota:
                     </label>
-                    <input required type="text" class="form-control @isset($error) is-invalid @endisset" placeholder="Enter ..." id="no_telp" name="no_telp">
+                    <input required type="text" class="form-control @isset($error) is-invalid @endisset" placeholder="Enter ..." id="kota" name="kota">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <!-- text input -->
+                    <div class="form-group">
+                    <label for="provinsi">
+                        @isset($error)<i class="far fa-times-circle"></i>@endisset
+                        Provinsi:
+                    </label>
+                    <input required type="text" class="form-control @isset($error) is-invalid @endisset" placeholder="Enter ..." id="provinsi" name="provinsi">
                     </div>
                 </div>
             </div>
         </form>
         </div>
+        <div class="card-footer">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
         <!-- /.card-body -->
-    </div>
-    </div>
+    </form>
 </section>
+<div class="toast" id="successToast" data-autohide="true" data-delay="3000">
+    <div class="toast-header bg-success">
+      <strong class="mr-auto">Success</strong>
+      <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
+    </div>
+    <div class="toast-body">
+      Data has been submitted successfully.
+    </div>
+  </div>
+  
+  <div class="toast" id="errorToast" data-autohide="true" data-delay="3000">
+    <div class="toast-header bg-danger">
+      <strong class="mr-auto">Error</strong>
+      <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
+    </div>
+    <div class="toast-body">
+      Error occurred while submitting data.
+    </div>
+  </div>
+  
 <script type="text/javascript">
-   $(function () {
-        //Date picker
-        $('#reservationdate').datetimepicker({
-            format: 'L'
-        });
-   });
+$(document).ready(function() {
+  $('#formIsiData').submit(function(event) {
+    // Mencegah pengiriman formulir secara default
+    event.preventDefault();
+
+    // Mendapatkan nilai input dari form
+    let nama = $('#nama').val();
+    let nis = $('#nis').val();
+    let nisn = $('#nisn').val();
+    let agama = $('#agama').val();
+    let no_telp = $('#no_telp').val();
+    let gender = $('input[name="gender"]:checked').val();
+    let status_anak = $('input[name="status_anak"]:checked').val();
+    let status_data = $('input[name="status_data"]:checked').val();
+    let tempat_lahir = $('#tempat_lahir').val();
+    let tanggal_lahir = $('#tanggal_lahir').val();
+    let nama_ayah = $('#nama_ayah').val();
+    let nama_ibu = $('#nama_ibu').val();
+    let jalan = $('#jalan').val();
+    let kecamatan = $('#kecamatan').val();
+    let kelurahan = $('#kelurahan').val();
+    let kota = $('#kota').val();
+    let provinsi = $('#provinsi').val();
+
+    // Membuat objek data yang akan dikirimkan melalui AJAX
+    let data = {
+        nama: nama,
+        nis: nis,
+        nisn: nisn,
+        agama: agama,
+        no_telp: no_telp,
+        gender: gender,
+        status_anak: status_anak,
+        status_data: status_data,
+        tempat_lahir: tempat_lahir,
+        tanggal_lahir: tanggal_lahir,
+        nama_ayah: nama_ayah,
+        nama_ibu: nama_ibu,
+        jalan: jalan,
+        kecamatan: kecamatan,
+        kelurahan: kelurahan,
+        kota: kota,
+        provinsi: provinsi
+    };
+
+    console.log(data);
+
+    // Kirim data ke controller menggunakan AJAX
+    $.ajax({
+      url: '{{ site_url("dashboard/createData") }}',
+      type: 'POST',
+      data: data,
+      dataType: 'json',
+      success: function(response) {
+        $('#successToast').toast('show');
+      },
+      error: function(xhr, status, error) {
+      }
+    });
+  });
+});
+
 </script>
 @endsection

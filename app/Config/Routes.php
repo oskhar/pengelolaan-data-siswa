@@ -32,8 +32,11 @@ $routes->set404Override();
 $routes->get('/', 'Dashboard::index');
 $routes->get('/dashboard', 'Dashboard::index');
 $routes->get('/dashboard/create', 'Dashboard::create');
+$routes->get('/dashboard/createData', 'Dashboard::createData');
 $routes->get('/dashboard/update', 'Dashboard::update');
+$routes->get('/dashboard/updateData', 'Dashboard::updateData');
 $routes->get('/dashboard/detail', 'Dashboard::detail');
+$routes->get('/dashboard/detail/(:any)', 'Dashboard::detail/$1');
 $routes->get('/dashboard/get_data_ajax', 'Dashboard::get_data_ajax');
 
 /*
