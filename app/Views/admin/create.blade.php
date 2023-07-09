@@ -2,6 +2,8 @@
 
 @section('title', 'Menambahkan Data')
 @section('mainContent')
+<!-- daterange picker -->
+<link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
 
 <!-- Content Header (Page header) -->
 <section class="content-header">
@@ -21,7 +23,7 @@
 </section>
 
 <section class="content row">
-    <div class="container-fluid col-sm-6 justify-content-center">
+    <div class="container-fluid col-sm-10 justify-content-center">
     <!-- general form -->
     <div class="card card-success">
         <div class="card-header">
@@ -46,7 +48,7 @@
                         @isset($error)<i class="far fa-times-circle"></i>@endisset
                         NIS:
                     </label>
-                    <input required type="text" class="form-control @isset($error) is-invalid @endisset" placeholder="Enter ..." id="nis">
+                    <input required type="text" class="form-control @isset($error) is-invalid @endisset" placeholder="Enter ..." id="nis" name="nis">
                     </div>
                 </div>
                 <div class="col-sm-6">
@@ -56,27 +58,27 @@
                         @isset($error)<i class="far fa-times-circle"></i>@endisset
                         NISN:
                     </label>
-                    <input required type="text" class="form-control @isset($error) is-invalid @endisset" placeholder="Enter ..." id="nisn">
+                    <input required type="text" class="form-control @isset($error) is-invalid @endisset" placeholder="Enter ..." id="nisn" name="nisn">
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <!-- text input -->
                     <div class="form-group">
-                    <label for="nis">
+                    <label for="agama">
                         @isset($error)<i class="far fa-times-circle"></i>@endisset
                         agama:
                     </label>
-                    <input required type="text" class="form-control @isset($error) is-invalid @endisset" placeholder="Enter ..." id="nis">
+                    <input required type="text" class="form-control @isset($error) is-invalid @endisset" placeholder="Enter ..." id="agama" name="agama">
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <!-- text input -->
                     <div class="form-group">
-                    <label for="nisn">
+                    <label for="no_telp">
                         @isset($error)<i class="far fa-times-circle"></i>@endisset
                         nomor telepon:
                     </label>
-                    <input required type="text" class="form-control @isset($error) is-invalid @endisset" placeholder="Enter ..." id="nisn">
+                    <input required type="text" class="form-control @isset($error) is-invalid @endisset" placeholder="Enter ..." id="no_telp" name="no_telp">
                     </div>
                 </div>
             </div>
@@ -111,6 +113,7 @@
                     </div>
                 </div>
             </div>
+            <h4>Isi Data Kelahiran Siswa</h4>
             <!-- inline input -->
             <div class="row">
                 <div class="col-sm-6">
@@ -121,12 +124,9 @@
                 </div>
                 <div class="col-sm-6">
                     <div class="form-group">
-                      <label class="col-form-label">Tanggal Lahir:</label>
+                        <label class="col-form-label">Tanggal Lahir:</label>
                         <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                            <input type="text" class="form-control datetimepicker-input" data-target="#reservationdate"/>
-                            <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
-                                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                            </div>
+                            <input type="date" class="form-control datetimepicker-input" data-target="#reservationdate">
                         </div>
                     </div>
                 </div>
@@ -155,18 +155,61 @@
                 <input required type="text" class="form-control" id="nama" placeholder="Enter ...">
             </div>
             <h4>Isi Alamat Siswa</h4>
+            <!-- inline input -->
+            <div class="row">
+                <div class="col-sm-6">
+                    <!-- text input -->
+                    <div class="form-group">
+                    <label for="nis">
+                        @isset($error)<i class="far fa-times-circle"></i>@endisset
+                        NIS:
+                    </label>
+                    <input required type="text" class="form-control @isset($error) is-invalid @endisset" placeholder="Enter ..." id="nis" name="nis">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <!-- text input -->
+                    <div class="form-group">
+                    <label for="nisn">
+                        @isset($error)<i class="far fa-times-circle"></i>@endisset
+                        NISN:
+                    </label>
+                    <input required type="text" class="form-control @isset($error) is-invalid @endisset" placeholder="Enter ..." id="nisn" name="nisn">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <!-- text input -->
+                    <div class="form-group">
+                    <label for="agama">
+                        @isset($error)<i class="far fa-times-circle"></i>@endisset
+                        agama:
+                    </label>
+                    <input required type="text" class="form-control @isset($error) is-invalid @endisset" placeholder="Enter ..." id="agama" name="agama">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <!-- text input -->
+                    <div class="form-group">
+                    <label for="no_telp">
+                        @isset($error)<i class="far fa-times-circle"></i>@endisset
+                        nomor telepon:
+                    </label>
+                    <input required type="text" class="form-control @isset($error) is-invalid @endisset" placeholder="Enter ..." id="no_telp" name="no_telp">
+                    </div>
+                </div>
+            </div>
         </form>
         </div>
         <!-- /.card-body -->
     </div>
     </div>
 </section>
-<script>
-    $(function () {
+<script type="text/javascript">
+   $(function () {
         //Date picker
         $('#reservationdate').datetimepicker({
             format: 'L'
         });
-    })
+   });
 </script>
 @endsection

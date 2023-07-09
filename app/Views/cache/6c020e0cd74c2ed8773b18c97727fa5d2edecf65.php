@@ -43,11 +43,61 @@
                         <table id="example1" class="table table-bordered table-striped">
                         <thead>
                             <tr>
-                                <th>Rendering engine</th>
-                                <th>Browser</th>
-                                <th>Platform(s)</th>
-                                <th>Engine version</th>
-                                <th>CSS grade</th>
+                                <th>NIS</th>
+                                <th>NISN</th>
+                                <th>Nama Lengkap</th>
+                                <th>Gender</th>
+                                <th>Agama</th>
+                                <th>Nomor Telepon</th>
+                                <th>Nama Ayah</th>
+                                <th>Nama Ibu</th>
+                                <th>Status Anak</th>
+                                <th>Status Data</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Tabel data siswa</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Jalan</th>
+                                <th>Kecamatan</th>
+                                <th>Kelurahan</th>
+                                <th>Kota</th>
+                                <th>Provinsi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Tabel data siswa</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Tempat Lahir</th>
+                                <th>Hari Lahir</th>
+                                <th>Bulan Lahir</th>
+                                <th>Tahun Lahir</th>
                             </tr>
                         </thead>
                         <tbody>
