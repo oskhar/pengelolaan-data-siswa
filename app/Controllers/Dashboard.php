@@ -18,18 +18,18 @@ class Dashboard extends BaseController
 
     public function index()
     {
-        return blade_view('admin/dashboard', ['tes' => 'isi data']);
+        return blade_view('admin/dashboard', ['dashboard' => true]);
     }
     public function create()
     {
-        return blade_view('admin/create', ['tes' => 'isi data']);
+        return blade_view('admin/create', ['create' => true]);
     }
     public function update()
     {
-        return blade_view('admin/update', ['tes' => 'isi data']);
+        return blade_view('admin/update', ['update' => true]);
     }
     public function delete()
     {
-        return blade_view('admin/delete', ['tes' => 'isi data']);
+        return blade_view('admin/delete', ['delete' => true]);
     }
 }

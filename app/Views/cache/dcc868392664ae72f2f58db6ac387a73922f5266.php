@@ -1,4 +1,4 @@
-<?php $__env->startSection('title', 'Menambahkan Data'); ?>
+<?php $__env->startSection('title', 'Mengubah data Data'); ?>
 <?php $__env->startSection('mainContent'); ?>
 
 <!-- Content Header (Page header) -->
@@ -19,7 +19,8 @@
 </section>
 
 <section class="content row">
-    <div class="container-fluid col-sm-6 justify-content-center">
+
+    <div class="container-fluid col-sm-6">
     <!-- general form -->
     <div class="card card-success">
         <div class="card-header">
@@ -27,7 +28,7 @@
         </div>
         <!-- /.card-header -->
         <div class="card-body">
-        <form method="post">
+        <form method="post" action="">
             <?= csrf_field() ?>
             <!-- input states -->
             <h4>Isi Data Siswa</h4>
@@ -60,11 +61,11 @@
                 <div class="col-sm-6">
                     <!-- text input -->
                     <div class="form-group">
-                    <label for="nis">
+                    <label for="agama">
                         <?php if(isset($error)): ?><i class="far fa-times-circle"></i><?php endif; ?>
                         agama:
                     </label>
-                    <input required type="text" class="form-control <?php if(isset($error)): ?> is-invalid <?php endif; ?>" placeholder="Enter ..." id="nis">
+                    <input required type="text" class="form-control <?php if(isset($error)): ?> is-invalid <?php endif; ?>" placeholder="Enter ..." id="agama" name="agama">
                     </div>
                 </div>
                 <div class="col-sm-6">
@@ -158,6 +159,44 @@
         <!-- /.card-body -->
     </div>
     </div>
+    <div class="container-fluid col-sm-6">
+      <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Tabel data siswa</h3>
+                </div>
+                <div class="card-header">
+                  <div class="col-sm-12 col-md-6">
+                    <form method="post" id="example1_filter" class="dataTables_filter">
+                      <label>Search:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="example1">
+                      </label>
+                    </form>
+                  </div>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <table id="example1" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Rendering engine</th>
+                            <th>Browser</th>
+                            <th>Platform(s)</th>
+                            <th>Engine version</th>
+                            <th>CSS grade</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+<section class="content">
 </section>
 <script>
     $(function () {

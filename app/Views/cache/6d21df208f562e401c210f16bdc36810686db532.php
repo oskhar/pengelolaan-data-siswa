@@ -20,10 +20,6 @@
   <link rel="stylesheet" href="plugins/jqvmap/jqvmap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
-  <!-- SweetAlert2 -->
-  <link rel="stylesheet" href="plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
-  <!-- Toastr -->
-  <link rel="stylesheet" href="plugins/toastr/toastr.min.css">
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Daterange picker -->
@@ -216,19 +212,19 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?php echo e(base_url('/dashboard')); ?>" class="nav-link active">
+                <a href="<?php echo e(base_url('/dashboard')); ?>" class="nav-link <?php if(isset($dashboard)): ?> active <?php endif; ?>">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Read</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo e(base_url('/dashboard/create')); ?>" class="nav-link">
+                <a href="<?php echo e(base_url('/dashboard/create')); ?>" class="nav-link <?php if(isset($create)): ?> active <?php endif; ?>">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Create</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo e(base_url('/dashboard/Update')); ?>" class="nav-link">
+                <a href="<?php echo e(base_url('/dashboard/update')); ?>" class="nav-link <?php if(isset($update)): ?> active <?php endif; ?>">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Update</p>
                 </a>
@@ -289,12 +285,6 @@
 <script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.js"></script>
-<!-- SweetAlert2 -->
-<script src="../../plugins/sweetalert2/sweetalert2.min.js"></script>
-<!-- Toastr -->
-<script src="../../plugins/toastr/toastr.min.js"></script>
-<!-- AdminLTE App -->
-<script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="dist/js/pages/dashboard.js"></script>
 </body>
