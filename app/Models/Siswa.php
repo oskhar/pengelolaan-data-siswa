@@ -15,29 +15,16 @@ class Siswa extends Model
     protected $updatedField  = 'updated_at';
     protected $deletedField  = 'deleted_at';
 
-    public function getData($start, $length)
+    public function getData()
     {
-        $result = $this->findAll($start, $length);
+        $result = $this->orderBy('nis')
+            ->findAll();
         return $result;
     }
-    public function getDataSearch($search, $start, $length)
-    {
-        $result = $this->like('nama', $search)
-            ->findAll($start, $length);
-
-        return $result;
-    }
-    public function getLength($search = '')
-    {
-        $result = $this->like('nama', $search)
-            ->countAllResults();
-        
-        return $result;
-    }
-    public function doSoftDelete($user_id) {
+    public function doSoftDelete($nis) {
         // Menghapus lembut pengguna dengan mengatur deleted_at menjadi waktu saat ini
         $this->set('deleted_at', date('Y-m-d H:i:s'));
-        $this->where('id', $user_id);
+        $this->where('id', $nis);
         $this->update('users');
     }
 

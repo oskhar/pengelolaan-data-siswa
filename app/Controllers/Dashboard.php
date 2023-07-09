@@ -18,35 +18,39 @@ class Dashboard extends BaseController
 
     public function index()
     {
-        return blade_view('admin/dashboard', ['dashboard' => true]);
+        $datas = $this->Siswa->findAll();
+        return blade_view('admin/dashboard', [
+            'dashboard' => true,
+            'datas' => $datas,
+        ]);
     }
     public function create()
     {
-        return blade_view('admin/create', ['create' => true]);
+        return blade_view('admin/create', [
+            'create' => true,
+        ]);
     }
     public function update()
     {
-        return blade_view('admin/update', ['update' => true]);
+        return blade_view('admin/update', [
+            'update' => true,
+        ]);
     }
-    public function delete()
+    public function detail()
     {
-        return blade_view('admin/delete', ['delete' => true]);
+        return blade_view('admin/detail', [
+            'dashboard' => true,
+        ]);
     }
-    public function ajaxList()
+    public function get_data_ajax()
     {
-        $draw = $_REQUEST['draw'];
-        $length = $_REQUEST['length'];
-        $start = $_REQUEST['start'];
-        $search = $_REQUEST['search']['value'];
+        if($this->request->isAJAX()) {
 
-        $total = $this->Siswa->getLength();
-        $output = [
-            'length' => $length,
-            'draw' => $draw,
-            'recordsTotal' => $total,
-            'recordsFiltered' => $total
-        ];
+            $data = $this->Siswa->findAll();
+            echo json_encode($data);
 
-        
+        } else {
+            exit('Permintaan data tidak dapat diperoses');
+        }
     }
 }
