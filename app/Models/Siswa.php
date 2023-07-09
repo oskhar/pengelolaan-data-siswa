@@ -14,6 +14,7 @@ class Siswa extends Model
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';
     protected $deletedField  = 'deleted_at';
+    protected $allowedFields = ['nama', 'nis', 'nisn', 'agama', 'no_telp', 'gender', 'status_anak', 'status_data', 'nama_ayah', 'nama_ibu'];
 
     public function getData()
     {

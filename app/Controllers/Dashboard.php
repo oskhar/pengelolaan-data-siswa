@@ -36,6 +36,8 @@ class Dashboard extends BaseController
     {
         // Mengambil semua data post
         $all_data = $this->request->getPost();
+        $test_data = json_encode($all_data);
+        echo "<script>alert('$test_data')</script>";
 
         // Insert data siswa
         $data_siswa = [
@@ -54,6 +56,7 @@ class Dashboard extends BaseController
         
         // Insert data alamat
         $data_alamat = [
+            'id' => 0,
             'jalan' => $all_data['jalan'],
             'kecamatan' => $all_data['kecamatan'],
             'kelurahan' => $all_data['kelurahan'],
@@ -65,10 +68,12 @@ class Dashboard extends BaseController
 
         // Insert data kelahiran
         $data_kelahiran = [
+            'id' => 0,
             'tempat' => $all_data['tempat_lahir'],
             'hari' => $all_data['hari'],
             'bulan' => $all_data['bulan'],
             'tahun' => $all_data['tahun'],
+            'nis_siswa' => $all_data['nis'],
         ];
         $this->DataKelahiran->insert($data_kelahiran);
 

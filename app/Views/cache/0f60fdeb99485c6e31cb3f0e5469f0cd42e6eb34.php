@@ -86,11 +86,11 @@
                     <div class="form-group">
                         <h5>Gender</h5>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="gender" id="gender" checked>
+                            <input value="1" class="form-check-input" type="radio" name="gender" id="gender" checked>
                             <label class="form-check-label">Laki-laki</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="gender" id="gender">
+                            <input value="0" class="form-check-input" type="radio" name="gender" id="gender">
                             <label class="form-check-label">Perempuan</label>
                         </div>
                     </div>
@@ -100,11 +100,11 @@
                     <div class="form-group">
                         <h5>Status Anak</h5>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="status_anak" id="status_anak" checked>
+                            <input value="1" class="form-check-input" type="radio" name="status_anak" id="status_anak" checked>
                             <label class="form-check-label">Masih Pelajar</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="status_anak" id="status_anak">
+                            <input value="0" class="form-check-input" type="radio" name="status_anak" id="status_anak">
                             <label class="form-check-label">Sudah Lulus</label>
                         </div>
                     </div>
@@ -135,11 +135,11 @@
                     <div class="form-group">
                         <h5>Status Data</h5>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="status_data" id="status_data" checked>
+                            <input value="1" class="form-check-input" type="radio" name="status_data" id="status_data" checked>
                             <label class="form-check-label">Aktif</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="status_data" id="status_data">
+                            <input value="0" class="form-check-input" type="radio" name="status_data" id="status_data">
                             <label class="form-check-label">Tidak Aktif</label>
                         </div>
                     </div>
@@ -213,25 +213,6 @@
         <!-- /.card-body -->
     </form>
 </section>
-<div class="toast" id="successToast" data-autohide="true" data-delay="3000">
-    <div class="toast-header bg-success">
-      <strong class="mr-auto">Success</strong>
-      <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
-    </div>
-    <div class="toast-body">
-      Data has been submitted successfully.
-    </div>
-  </div>
-  
-  <div class="toast" id="errorToast" data-autohide="true" data-delay="3000">
-    <div class="toast-header bg-danger">
-      <strong class="mr-auto">Error</strong>
-      <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
-    </div>
-    <div class="toast-body">
-      Error occurred while submitting data.
-    </div>
-  </div>
   
 <script type="text/javascript">
 $(document).ready(function() {
@@ -258,6 +239,12 @@ $(document).ready(function() {
     let kota = $('#kota').val();
     let provinsi = $('#provinsi').val();
 
+    // Memisahkan bagian bagian pada tanggal
+    let split_tanggal = tanggal_lahir.split("-");
+    let hari = split_tanggal[2];
+    let bulan = split_tanggal[1];
+    let tahun = split_tanggal[0]; 
+
     // Membuat objek data yang akan dikirimkan melalui AJAX
     let data = {
         nama: nama,
@@ -269,7 +256,9 @@ $(document).ready(function() {
         status_anak: status_anak,
         status_data: status_data,
         tempat_lahir: tempat_lahir,
-        tanggal_lahir: tanggal_lahir,
+        hari: hari,
+        bulan: bulan,
+        tahun: tahun,
         nama_ayah: nama_ayah,
         nama_ibu: nama_ibu,
         jalan: jalan,
@@ -279,18 +268,17 @@ $(document).ready(function() {
         provinsi: provinsi
     };
 
-    console.log(data);
-
     // Kirim data ke controller menggunakan AJAX
     $.ajax({
-      url: '<?php echo e(site_url("dashboard/updating")); ?>',
+      url: '<?php echo e(site_url("dashboard/createData")); ?>',
       type: 'POST',
       data: data,
       dataType: 'json',
       success: function(response) {
-        $('#successToast').toast('show');
+        alert("Data berhasil ditambahkan");
       },
       error: function(xhr, status, error) {
+        alert("Data gagal ditambahkan: " + xhr.status + "\n" + xhr.responseText + "\n" + error);
       }
     });
   });

@@ -9,6 +9,7 @@ class DataKelahiran extends Model
     // ...
     protected $table = 'data_kelahiran';
     protected $dateFormat = 'datetime';
+    protected $allowedFields = ['jalan', 'kecamatan', 'kelurahan', 'kota', 'provinsi', 'nis_siswa'];
 
     public function getData()
     {

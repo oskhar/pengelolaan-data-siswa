@@ -9,6 +9,7 @@ class Alamat extends Model
     // ...
     protected $table = 'alamat';
     protected $dateFormat = 'datetime';
+    protected $allowedFields = ['tempat', 'hari', 'bulan', 'tahun', 'nis_siswa'];
 
     public function getData()
     {
