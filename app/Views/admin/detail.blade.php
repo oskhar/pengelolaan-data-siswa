@@ -21,10 +21,12 @@
 </section>
 <section class="content row">
     <div class="container-fluid col-sm-8 justify-content-center">
-            <div class="card card-primary">
-                <div class="card-header">
-                    <h3 class="card-title">Form Pengisian Data</h3>
-                </div>
+            <div class="card @if ($data_trash) card-danger @else card-primary card-outline @endif">
+                @if ($data_trash)
+                    <div class="card-header">
+                        <h3 class="card-title">Data Telah Dihapus <pre class="mb-0">(Click tombol di bawah untuk memulihkan data)</pre></h3>
+                    </div>
+                @endif
                 <div class="card-body box-profile">
                     <div class="text-center">
                         <img class="profile-user-img img-fluid img-circle" src="dist/img/user6-128x128.jpg" alt="User profile picture">
