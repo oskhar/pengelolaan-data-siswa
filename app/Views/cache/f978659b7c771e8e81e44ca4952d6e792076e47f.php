@@ -1,4 +1,4 @@
-<?php $__env->startSection('title', 'Halaman Dashboard'); ?>
+<?php $__env->startSection('title', 'Halaman Trash'); ?>
 <?php $__env->startSection('mainContent'); ?>
     
   <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
@@ -65,7 +65,7 @@
   <script>
     $(document).ready(function () {
       $.ajax({
-        url: "<?php echo e(site_url('dashboard/get_data_ajax')); ?>",
+        url: "<?php echo e(site_url('dashboard/get_deleted_data_ajax')); ?>",
         dataType: "json",
         success: function(response)
         {
@@ -81,35 +81,36 @@
             $('<td>').text(["Lulus", "Pelajar"][siswa.status_anak]).appendTo(row);
             $('<td>').text(["Tidak Aktif", "Aktif"][siswa.status_data]).appendTo(row);
             row.append('<td><a href="<?php echo e(base_url('/dashboard/detail')); ?>/' + siswa.nis + '" class="btn btn-primary btn-sm">detail</a></td>');
-            row.append('<td><a onclick="doSoftDelete(\'' + siswa.nis + '\')" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a></td>');
+            row.append('<td><a onclick="doRecoverData(\'' + siswa.nis + '\')" class="btn btn-success btn-sm">recover</a></td>');
             var targetTbody = $('#data-siswa tbody');
             row.appendTo(targetTbody);
           });
         },
-        error: function()
+        error: function(xhr, status, error)
         {
-          alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
+          alert(xhr.status + "\n" + xhr.responseText + "\n" + error);
         }
       });
     });
-    function doSoftDelete(nis) {
-      // Membuat data dictionary
-      let data = {nis: nis};
+    // Lakukan pemulihan data yang sudah dihapus
+    function doRecoverData(nis) {
+        // Membuat data dictionary
+        let data = {nis: nis};
 
-      // Kirim data ke controller menggunakan AJAX
-      $.ajax({
-        url: '<?php echo e(site_url("dashboard/soft_delete")); ?>',
-        type: 'POST',
-        data: data,
-        dataType: 'json',
-        success: function(response) {
-          alert("Data berhasil dihapus");
-        window.location.href = "<?php echo e(site_url('dashboard')); ?>";
-        },
-        error: function(xhr, status, error) {
-          alert("Data gagal ditambahkan: " + xhr.status + "\n" + xhr.responseText + "\n" + error);
-        }
-      });
+        // Kirim data ke controller menggunakan AJAX
+        $.ajax({
+            url: '<?php echo e(site_url("dashboard/recover_data")); ?>',
+            type: 'POST',
+            data: data,
+            dataType: 'json',
+            success: function(response) {
+            alert("Data berhasil dipulihkan");
+            window.location.href = "<?php echo e(site_url('dashboard/trash')); ?>";
+            },
+            error: function(xhr, status, error) {
+            alert("Data gagal dipulihkan: " + xhr.status + "\n" + xhr.responseText + "\n" + error);
+            }
+        });
     }
   </script>
 <?php $__env->stopSection(); ?>

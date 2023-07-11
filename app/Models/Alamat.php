@@ -17,13 +17,14 @@ class Alamat extends Model
             ->findAll();
         return $result;
     }
-    public function getSpecificData($target)
+    public function getSpecificData($nis_target)
     {
-        $result = $this->where('nis_siswa', $target)
+        $result = $this->where('nis_siswa', $nis_target)
             ->first();
         return $result;
     }
-    public function doInsertDataPost($data) {
+    public function doInsertData($data)
+    {
         // Insert data alamat
         $data_alamat = [
             'id' => 0,
@@ -36,5 +37,20 @@ class Alamat extends Model
         ];
         $this->insert($data_alamat);
     }
-
+    public function doUpdateData($old_nis, $data)
+    {
+        // Insert data alamat
+        $data_alamat = [
+            'id' => 0,
+            'jalan' => $data['jalan'],
+            'kecamatan' => $data['kecamatan'],
+            'kelurahan' => $data['kelurahan'],
+            'kota' => $data['kota'],
+            'provinsi' => $data['provinsi'],
+            'nis_siswa' => $data['nis'],
+        ];
+        $this->where('nis_siswa', $old_nis)
+            ->set($data_alamat)
+            ->update();
+    }
 }

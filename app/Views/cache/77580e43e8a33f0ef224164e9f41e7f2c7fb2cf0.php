@@ -5,12 +5,13 @@
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1>DataTables</h1>
+        <h1>Detail Data</h1>
       </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-          <li class="breadcrumb-item"><a href="#">Home</a></li>
-          <li class="breadcrumb-item active">DataTables</li>
+          <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+          <li class="breadcrumb-item active">Read Data</li>
+          <li class="breadcrumb-item active">Detail Data</li>
         </ol>
       </div>
     </div>
@@ -18,7 +19,10 @@
 </section>
 <section class="content row">
     <div class="container-fluid col-sm-8 justify-content-center">
-            <div class="card card-primary card-outline">
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">Form Pengisian Data</h3>
+                </div>
                 <div class="card-body box-profile">
                     <div class="text-center">
                         <img class="profile-user-img img-fluid img-circle" src="dist/img/user6-128x128.jpg" alt="User profile picture">
@@ -57,16 +61,64 @@
                             <b>Tempat Lahir:</b> <span class="float-right"><?php echo e($data_kelahiran['tempat']); ?></span>
                         </li>
                         <li class="list-group-item">
-                            <b>Tanggal Lahir:</b> <span class="float-right"><?php echo e($data_kelahiran['hari']); ?> <?php echo e($data_kelahiran['bulan']); ?> <?php echo e($data_kelahiran['tahun']); ?></span>
+                            <b>Tanggal Lahir:</b> <span class="float-right"><?php echo e($data_kelahiran['hari']); ?> <?php echo e($bulan[(int)$data_kelahiran['bulan']]); ?> <?php echo e($data_kelahiran['tahun']); ?></span>
                         </li>
                     </ul>
 
-                    <a href="#" class="btn btn-primary btn-block"><b>Update Data</b></a>
+                    <?php if($data_trash): ?>
+                        <a href="<?php echo e(base_url("/dashboard/update/")); ?><?php echo e($data_siswa['nis']); ?>/1" class="btn btn-primary btn-block"><b>Recover & Update Data</b></a>
+                        <a onclick="doRecoverData('<?php echo e($data_siswa['nis']); ?>')" class="btn btn-success btn-block"><b>Recover Data</b></a>
+                    <?php else: ?>
+                        <a href="<?php echo e(base_url("/dashboard/update/")); ?><?php echo e($data_siswa['nis']); ?>" class="btn btn-primary btn-block"><b>Update Data</b></a>
+                        <a onclick="doSoftDelete('<?php echo e($data_siswa['nis']); ?>')" class="btn btn-danger btn-block"><b>Delete Data</b></a>
+                    <?php endif; ?>
                 </div>
                 <!-- /.card-body -->
         </div>
     </div>
     </div>
 </section>
+<script>
+    // Untuk menghapus data secara lembut (softdelete)
+    function doSoftDelete(nis) {
+        // Membuat data dictionary
+        let data = {nis: nis};
+
+        // Kirim data ke controller menggunakan AJAX
+        $.ajax({
+            url: '<?php echo e(site_url("dashboard/soft_delete")); ?>',
+            type: 'POST',
+            data: data,
+            dataType: 'json',
+            success: function(response) {
+            alert("Data berhasil dihapus");
+            window.location.href = "<?php echo e(site_url('dashboard/detail')); ?>/<?php echo e($data_siswa['nis']); ?>";
+            },
+            error: function(xhr, status, error) {
+            alert("Data gagal dihapus: " + xhr.status + "\n" + xhr.responseText + "\n" + error);
+            }
+        });
+    }
+    // Untuk memulihkan data yang sudah dihapus
+    function doRecoverData(nis) {
+        // Membuat data dictionary
+        let data = {nis: nis};
+
+        // Kirim data ke controller menggunakan AJAX
+        $.ajax({
+            url: '<?php echo e(site_url("dashboard/recover_data")); ?>',
+            type: 'POST',
+            data: data,
+            dataType: 'json',
+            success: function(response) {
+            alert("Data berhasil dipulihkan");
+            window.location.href = "<?php echo e(site_url('dashboard/detail')); ?>/<?php echo e($data_siswa['nis']); ?>";
+            },
+            error: function(xhr, status, error) {
+            alert("Data gagal dipulihkan: " + xhr.status + "\n" + xhr.responseText + "\n" + error);
+            }
+        });
+    }
+</script>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layout/admin_template', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

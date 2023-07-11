@@ -63,9 +63,7 @@
 <div class="wrapper">
 
   <!-- Preloader -->
-  <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__shake" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
-  </div>
+  
 
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -259,6 +257,12 @@
                 <a href="<?php echo e(base_url('/dashboard/update')); ?>" class="nav-link <?php if(isset($update)): ?> active <?php endif; ?>">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Update</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo e(base_url('/dashboard/trash')); ?>" class="nav-link <?php if(isset($trash)): ?> active <?php endif; ?>">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Trash</p>
                 </a>
               </li>
             </ul>

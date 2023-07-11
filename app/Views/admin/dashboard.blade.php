@@ -12,12 +12,11 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>DataTables</h1>
+          <h1>Read Data</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">DataTables</li>
+            <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
           </ol>
         </div>
       </div>
@@ -84,7 +83,7 @@
             $('<td>').text(["Lulus", "Pelajar"][siswa.status_anak]).appendTo(row);
             $('<td>').text(["Tidak Aktif", "Aktif"][siswa.status_data]).appendTo(row);
             row.append('<td><a href="{{ base_url('/dashboard/detail') }}/' + siswa.nis + '" class="btn btn-primary btn-sm">detail</a></td>');
-            row.append('<td><a href="{{ base_url('/dashboard/hapus') }}" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a></td>');
+            row.append('<td><a onclick="doSoftDelete(\'' + siswa.nis + '\')" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a></td>');
             var targetTbody = $('#data-siswa tbody');
             row.appendTo(targetTbody);
           });
@@ -95,5 +94,24 @@
         }
       });
     });
+    function doSoftDelete(nis) {
+      // Membuat data dictionary
+      let data = {nis: nis};
+
+      // Kirim data ke controller menggunakan AJAX
+      $.ajax({
+        url: '{{ site_url("dashboard/soft_delete") }}',
+        type: 'POST',
+        data: data,
+        dataType: 'json',
+        success: function(response) {
+          alert("Data berhasil dihapus");
+        window.location.href = "{{ site_url('dashboard') }}";
+        },
+        error: function(xhr, status, error) {
+          alert("Data gagal ditambahkan: " + xhr.status + "\n" + xhr.responseText + "\n" + error);
+        }
+      });
+    }
   </script>
 @endsection

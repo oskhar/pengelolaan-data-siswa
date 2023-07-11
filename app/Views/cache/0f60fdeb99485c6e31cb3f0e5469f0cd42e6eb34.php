@@ -8,12 +8,12 @@
     <div class="container-fluid">
         <div class="row mb-2">
         <div class="col-sm-6">
-            <h1>DataTables</h1>
+            <h1>Create Data</h1>
         </div>
         <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">DataTables</li>
+            <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+            <li class="breadcrumb-item active">Create Data</li>
             </ol>
         </div>
         </div>
@@ -25,7 +25,7 @@
     <!-- general form -->
     <div class="card card-success">
         <div class="card-header">
-        <h3 class="card-title">General Elements</h3>
+            <h3 class="card-title">Form Pengisian Data</h3>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
@@ -261,7 +261,7 @@ $(document).ready(function() {
 
     // Kirim data ke controller menggunakan AJAX
     $.ajax({
-      url: '<?php echo e(site_url("dashboard/createData")); ?>',
+      url: '<?php echo e(site_url("dashboard/create_data")); ?>',
       type: 'POST',
       data: data,
       dataType: 'json',
@@ -270,7 +270,7 @@ $(document).ready(function() {
         window.location.href = "<?php echo e(site_url('dashboard')); ?>";
       },
       error: function(xhr, status, error) {
-        alert("Data gagal ditambahkan: " + xhr.status + "\n" + xhr.responseText + "\n" + error);
+        alert("Data gagal ditambahkan: Kemungkinan anda memasukan nis atau nisn yang sudah terdaftar");
       }
     });
   });

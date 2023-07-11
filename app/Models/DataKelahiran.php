@@ -17,13 +17,14 @@ class DataKelahiran extends Model
             ->findAll();
         return $result;
     }
-    public function getSpecificData($target)
+    public function getSpecificData($nis_target)
     {
-        $result = $this->where('nis_siswa', $target)
+        $result = $this->where('nis_siswa', $nis_target)
             ->first();
         return $result;
     }
-    public function doInsertDataPost($data) {
+    public function doInsertData($data)
+    {
         // Insert data kelahiran
         $data_kelahiran = [
             'id' => 0,
@@ -34,6 +35,21 @@ class DataKelahiran extends Model
             'nis_siswa' => $data['nis'],
         ];
         $this->insert($data_kelahiran);
+    }
+    public function doUpdateData($old_nis, $data)
+    {
+        // Update data kelahiran
+        $data_kelahiran = [
+            'id' => 0,
+            'tempat' => $data['tempat_lahir'],
+            'hari' => $data['hari'],
+            'bulan' => $data['bulan'],
+            'tahun' => $data['tahun'],
+            'nis_siswa' => $data['nis'],
+        ];
+        $this->where('nis_siswa', $old_nis)
+            ->set($data_kelahiran)
+            ->update();
     }
 
 }
