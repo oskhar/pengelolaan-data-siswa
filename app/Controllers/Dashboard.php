@@ -41,6 +41,7 @@ class Dashboard extends BaseController
 
         // Membuat aturan untuk validasi data
         $rules = [
+            'nama'        => 'required|realpha',
             'nis'         => 'required',
             'nisn'        => 'required',
             'agama'       => 'required',
@@ -63,6 +64,8 @@ class Dashboard extends BaseController
 
         if ($this->validate($rules)) {
 
+            $errors = $this->validator->errors();
+            
             // Berikan respons JSON
             $response = [
                 'status' => 'error',
@@ -70,7 +73,8 @@ class Dashboard extends BaseController
             ];
         
             // Mengirim respons dalam format JSON
-            return $this->response->setJSON($response);
+            echo json_encode($response);
+            return false;
 
         }
 
@@ -86,7 +90,8 @@ class Dashboard extends BaseController
         ];
     
         // Mengirim respons dalam format JSON
-        return $this->response->setJSON($response);
+        echo json_encode($response);
+        return true;
     }
     public function update($data_nis = "", $recover_data = '')
     {

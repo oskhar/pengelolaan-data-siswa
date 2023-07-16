@@ -44,7 +44,7 @@
                     <label for="nis">
                         NIS:
                     </label>
-                    <input type="text" class="form-control" placeholder="Enter ..." id="nis" name="nis">
+                    <input type="number" class="form-control" placeholder="Enter ..." id="nis" name="nis">
                     </div>
                 </div>
                 <div class="col-sm-6">
@@ -53,25 +53,29 @@
                     <label for="nisn">
                         NISN:
                     </label>
-                    <input type="text" class="form-control" placeholder="Enter ..." id="nisn" name="nisn">
+                    <input type="number" class="form-control" placeholder="Enter ..." id="nisn" name="nisn">
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <!-- text input -->
                     <div class="form-group">
-                    <label for="agama">
-                        Agama:
-                    </label>
-                    <input type="text" class="form-control" placeholder="Enter ..." id="agama" name="agama">
+                        <label>Agama</label>
+                        <select class="form-control select2bs4 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true" name="agama" id="agama">
+                            <option value="Islam" selected="selected">Islam</option>
+                            <option value="Kristen">Kristen</option>
+                            <option value="Hindu">Hindu</option>
+                            <option value="Budha">Budha</option>
+                            <option value="Konghucu">Konghucu</option>
+                        </select>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <!-- text input -->
                     <div class="form-group">
                     <label for="no_telp">
-                        Nomor Telepon:
+                        Nomor Telepon (+62):
                     </label>
-                    <input type="text" class="form-control" placeholder="Enter ..." id="no_telp" name="no_telp">
+                    <input type="number" class="form-control" placeholder="Enter ..." id="no_telp" name="no_telp">
                     </div>
                 </div>
             </div>
@@ -97,11 +101,11 @@
                         <h5>Status Anak</h5>
                         <div class="form-check">
                             <input value="1" class="form-check-input" type="radio" name="status_anak" id="status_anak" checked>
-                            <label class="form-check-label">Masih Pelajar</label>
+                            <label class="form-check-label">Kandung</label>
                         </div>
                         <div class="form-check">
                             <input value="0" class="form-check-input" type="radio" name="status_anak" id="status_anak">
-                            <label class="form-check-label">Sudah Lulus</label>
+                            <label class="form-check-label">Angkat</label>
                         </div>
                     </div>
                 </div>
@@ -119,7 +123,7 @@
                     <div class="form-group">
                         <label class="col-form-label">Tanggal Lahir:</label>
                         <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                            <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir">
+                            <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir" max="<?php echo e(date('Y-m-d')); ?>">
                         </div>
                     </div>
                 </div>

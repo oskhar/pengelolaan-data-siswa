@@ -36,7 +36,7 @@
             <h4>Isi Data Siswa</h4>
             <div class="form-group">
                 <label class="col-form-label" for="nama">Nama Lengkap:</label>
-                <input type="text" value="{{ set_value('nama') }}" class="form-control" name="nama" id="nama" placeholder="Enter ...">
+                <input type="text" class="form-control" name="nama" id="nama" placeholder="Enter ...">
             </div>
             <!-- inline input -->
             <div class="row">
@@ -46,7 +46,7 @@
                     <label for="nis">
                         NIS:
                     </label>
-                    <input type="text" value="{{ set_value('nis') }}" class="form-control" placeholder="Enter ..." id="nis" name="nis">
+                    <input type="number" class="form-control" placeholder="Enter ..." id="nis" name="nis">
                     </div>
                 </div>
                 <div class="col-sm-6">
@@ -55,25 +55,29 @@
                     <label for="nisn">
                         NISN:
                     </label>
-                    <input type="text" value="{{ set_value('nisn') }}" class="form-control" placeholder="Enter ..." id="nisn" name="nisn">
+                    <input type="number" class="form-control" placeholder="Enter ..." id="nisn" name="nisn">
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <!-- text input -->
                     <div class="form-group">
-                    <label for="agama">
-                        Agama:
-                    </label>
-                    <input type="text" value="{{ set_value('agama') }}" class="form-control" placeholder="Enter ..." id="agama" name="agama">
+                        <label>Agama</label>
+                        <select class="form-control select2bs4 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true" name="agama" id="agama">
+                            <option value="Islam" selected="selected">Islam</option>
+                            <option value="Kristen">Kristen</option>
+                            <option value="Hindu">Hindu</option>
+                            <option value="Budha">Budha</option>
+                            <option value="Konghucu">Konghucu</option>
+                        </select>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <!-- text input -->
                     <div class="form-group">
                     <label for="no_telp">
-                        Nomor Telepon:
+                        Nomor Telepon (+62):
                     </label>
-                    <input type="text" value="{{ set_value('no_telp') }}" class="form-control" placeholder="Enter ..." id="no_telp" name="no_telp">
+                    <input type="number" class="form-control" placeholder="Enter ..." id="no_telp" name="no_telp">
                     </div>
                 </div>
             </div>
@@ -84,11 +88,11 @@
                     <div class="form-group">
                         <h5>Gender</h5>
                         <div class="form-check">
-                            <input value="1" class="form-check-input" type="radio" name="gender" id="gender" @if (set_value('gender') == 1) checked @endif>
+                            <input value="1" class="form-check-input" type="radio" name="gender" id="gender" checked>
                             <label class="form-check-label">Laki-laki</label>
                         </div>
                         <div class="form-check">
-                            <input value="0" class="form-check-input" type="radio" name="gender" id="gender" @if (set_value('gender') == 0) checked @endif>
+                            <input value="0" class="form-check-input" type="radio" name="gender" id="gender">
                             <label class="form-check-label">Perempuan</label>
                         </div>
                     </div>
@@ -98,12 +102,12 @@
                     <div class="form-group">
                         <h5>Status Anak</h5>
                         <div class="form-check">
-                            <input value="1" class="form-check-input" type="radio" name="status_anak" id="status_anak" @if (set_value('status_anak') == 1) checked @endif>
-                            <label class="form-check-label">Masih Pelajar</label>
+                            <input value="1" class="form-check-input" type="radio" name="status_anak" id="status_anak" checked>
+                            <label class="form-check-label">Kandung</label>
                         </div>
                         <div class="form-check">
-                            <input value="0" class="form-check-input" type="radio" name="status_anak" id="status_anak" @if (set_value('status_anak') == 0) checked @endif>
-                            <label class="form-check-label">Sudah Lulus</label>
+                            <input value="0" class="form-check-input" type="radio" name="status_anak" id="status_anak">
+                            <label class="form-check-label">Angkat</label>
                         </div>
                     </div>
                 </div>
@@ -114,14 +118,14 @@
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label class="col-form-label" for="tempat_lahir">Tempat Lahir:</label>
-                        <input type="text" value="{{ set_value('tempat_lahir') }}" class="form-control" id="tempat_lahir" name="tempat_lahir" placeholder="Enter ...">
+                        <input type="text" class="form-control" id="tempat_lahir" name="tempat_lahir" placeholder="Enter ...">
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label class="col-form-label">Tanggal Lahir:</label>
                         <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                            <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir" value="{{ set_value('tahun')."-".set_value('bulan')."-".set_value('hari') }}">
+                            <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir" max="{{ date('Y-m-d') }}">
                         </div>
                     </div>
                 </div>
@@ -133,11 +137,11 @@
                     <div class="form-group">
                         <h5>Status Data</h5>
                         <div class="form-check">
-                            <input value="1" class="form-check-input" type="radio" name="status_data" id="status_data" @if (set_value('status_data') == 1) checked @endif>
+                            <input value="1" class="form-check-input" type="radio" name="status_data" id="status_data" checked>
                             <label class="form-check-label">Aktif</label>
                         </div>
                         <div class="form-check">
-                            <input value="0" class="form-check-input" type="radio" name="status_data" id="status_data" @if (set_value('status_data') == 0) checked @endif>
+                            <input value="0" class="form-check-input" type="radio" name="status_data" id="status_data">
                             <label class="form-check-label">Tidak Aktif</label>
                         </div>
                     </div>
@@ -145,9 +149,9 @@
             </div>
             <div class="form-group">
                 <label class="col-form-label" for="nama">Nama Ayah:</label>
-                <input type="text" value="{{ set_value('nama_ayah') }}" class="form-control" id="nama_ayah" name="nama_ayah" placeholder="Enter ...">
+                <input type="text" class="form-control" id="nama_ayah" name="nama_ayah" placeholder="Enter ...">
                 <label class="col-form-label" for="nama">Nama Ibu:</label>
-                <input type="text" value="{{ set_value('nama_ibu') }}" class="form-control" id="nama_ibu" name="nama_ibu" placeholder="Enter ...">
+                <input type="text" class="form-control" id="nama_ibu" name="nama_ibu" placeholder="Enter ...">
             </div>
             <h4>Isi Alamat Siswa</h4>
             <!-- inline input -->
@@ -158,7 +162,7 @@
                     <label for="jalan">
                         Jalan:
                     </label>
-                    <input type="text" value="{{ set_value('jalan') }}" class="form-control" placeholder="Enter ..." id="jalan" name="jalan">
+                    <input type="text" class="form-control" placeholder="Enter ..." id="jalan" name="jalan">
                     </div>
                 </div>
                 <div class="col-sm-6">
@@ -167,7 +171,7 @@
                     <label for="kecamatan">
                         Kecamatan:
                     </label>
-                    <input type="text" value="{{ set_value('kecamatan') }}" class="form-control" placeholder="Optional ..." id="kecamatan" name="kecamatan">
+                    <input type="text" class="form-control" placeholder="Optional ..." id="kecamatan" name="kecamatan">
                     </div>
                 </div>
                 <div class="col-sm-6">
@@ -176,7 +180,7 @@
                     <label for="kelurahan">
                         Kelurahan:
                     </label>
-                    <input type="text" value="{{ set_value('kelurahan') }}" class="form-control" placeholder="Optional ..." id="kelurahan" name="kelurahan">
+                    <input type="text" class="form-control" placeholder="Optional ..." id="kelurahan" name="kelurahan">
                     </div>
                 </div>
                 <div class="col-sm-6">
@@ -185,7 +189,7 @@
                     <label for="kota">
                         Kota:
                     </label>
-                    <input type="text" value="{{ set_value('kota') }}" class="form-control" placeholder="Enter ..." id="kota" name="kota">
+                    <input type="text" class="form-control" placeholder="Enter ..." id="kota" name="kota">
                     </div>
                 </div>
                 <div class="col-sm-6">
@@ -194,7 +198,7 @@
                     <label for="provinsi">
                         Provinsi:
                     </label>
-                    <input type="text" value="{{ set_value('provinsi') }}" class="form-control" placeholder="Enter ..." id="provinsi" name="provinsi">
+                    <input type="text" class="form-control" placeholder="Enter ..." id="provinsi" name="provinsi">
                     </div>
                 </div>
             </div>
