@@ -24,6 +24,7 @@
 
 <section class="content row">
     <form method="post" id="formIsiData" class="container-fluid col-sm-10 justify-content-center">
+    <?= csrf_field() ?>
     <!-- general form -->
     <div class="card card-success">
         <div class="card-header">
@@ -31,12 +32,11 @@
         </div>
         <!-- /.card-header -->
         <div class="card-body">
-            <?= csrf_field() ?>
             <!-- input states -->
             <h4>Isi Data Siswa</h4>
             <div class="form-group">
                 <label class="col-form-label" for="nama">Nama Lengkap:</label>
-                <input required type="text" class="form-control" name="nama" id="nama" placeholder="Enter ...">
+                <input type="text" value="{{ set_value('nama') }}" class="form-control" name="nama" id="nama" placeholder="Enter ...">
             </div>
             <!-- inline input -->
             <div class="row">
@@ -46,7 +46,7 @@
                     <label for="nis">
                         NIS:
                     </label>
-                    <input required type="text" class="form-control @isset($error) is-invalid @endisset" placeholder="Enter ..." id="nis" name="nis">
+                    <input type="text" value="{{ set_value('nis') }}" class="form-control" placeholder="Enter ..." id="nis" name="nis">
                     </div>
                 </div>
                 <div class="col-sm-6">
@@ -55,7 +55,7 @@
                     <label for="nisn">
                         NISN:
                     </label>
-                    <input required type="text" class="form-control @isset($error) is-invalid @endisset" placeholder="Enter ..." id="nisn" name="nisn">
+                    <input type="text" value="{{ set_value('nisn') }}" class="form-control" placeholder="Enter ..." id="nisn" name="nisn">
                     </div>
                 </div>
                 <div class="col-sm-6">
@@ -64,7 +64,7 @@
                     <label for="agama">
                         Agama:
                     </label>
-                    <input required type="text" class="form-control @isset($error) is-invalid @endisset" placeholder="Enter ..." id="agama" name="agama">
+                    <input type="text" value="{{ set_value('agama') }}" class="form-control" placeholder="Enter ..." id="agama" name="agama">
                     </div>
                 </div>
                 <div class="col-sm-6">
@@ -73,7 +73,7 @@
                     <label for="no_telp">
                         Nomor Telepon:
                     </label>
-                    <input required type="text" class="form-control @isset($error) is-invalid @endisset" placeholder="Enter ..." id="no_telp" name="no_telp">
+                    <input type="text" value="{{ set_value('no_telp') }}" class="form-control" placeholder="Enter ..." id="no_telp" name="no_telp">
                     </div>
                 </div>
             </div>
@@ -84,11 +84,11 @@
                     <div class="form-group">
                         <h5>Gender</h5>
                         <div class="form-check">
-                            <input value="1" class="form-check-input" type="radio" name="gender" id="gender" checked>
+                            <input value="1" class="form-check-input" type="radio" name="gender" id="gender" @if (set_value('gender') == 1) checked @endif>
                             <label class="form-check-label">Laki-laki</label>
                         </div>
                         <div class="form-check">
-                            <input value="0" class="form-check-input" type="radio" name="gender" id="gender">
+                            <input value="0" class="form-check-input" type="radio" name="gender" id="gender" @if (set_value('gender') == 0) checked @endif>
                             <label class="form-check-label">Perempuan</label>
                         </div>
                     </div>
@@ -98,11 +98,11 @@
                     <div class="form-group">
                         <h5>Status Anak</h5>
                         <div class="form-check">
-                            <input value="1" class="form-check-input" type="radio" name="status_anak" id="status_anak" checked>
+                            <input value="1" class="form-check-input" type="radio" name="status_anak" id="status_anak" @if (set_value('status_anak') == 1) checked @endif>
                             <label class="form-check-label">Masih Pelajar</label>
                         </div>
                         <div class="form-check">
-                            <input value="0" class="form-check-input" type="radio" name="status_anak" id="status_anak">
+                            <input value="0" class="form-check-input" type="radio" name="status_anak" id="status_anak" @if (set_value('status_anak') == 0) checked @endif>
                             <label class="form-check-label">Sudah Lulus</label>
                         </div>
                     </div>
@@ -114,14 +114,14 @@
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label class="col-form-label" for="tempat_lahir">Tempat Lahir:</label>
-                        <input required type="text" class="form-control" id="tempat_lahir" name="tempat_lahir" placeholder="Enter ...">
+                        <input type="text" value="{{ set_value('tempat_lahir') }}" class="form-control" id="tempat_lahir" name="tempat_lahir" placeholder="Enter ...">
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label class="col-form-label">Tanggal Lahir:</label>
                         <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                            <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir">
+                            <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir" value="{{ set_value('tahun')."-".set_value('bulan')."-".set_value('hari') }}">
                         </div>
                     </div>
                 </div>
@@ -133,11 +133,11 @@
                     <div class="form-group">
                         <h5>Status Data</h5>
                         <div class="form-check">
-                            <input value="1" class="form-check-input" type="radio" name="status_data" id="status_data" checked>
+                            <input value="1" class="form-check-input" type="radio" name="status_data" id="status_data" @if (set_value('status_data') == 1) checked @endif>
                             <label class="form-check-label">Aktif</label>
                         </div>
                         <div class="form-check">
-                            <input value="0" class="form-check-input" type="radio" name="status_data" id="status_data">
+                            <input value="0" class="form-check-input" type="radio" name="status_data" id="status_data" @if (set_value('status_data') == 0) checked @endif>
                             <label class="form-check-label">Tidak Aktif</label>
                         </div>
                     </div>
@@ -145,9 +145,9 @@
             </div>
             <div class="form-group">
                 <label class="col-form-label" for="nama">Nama Ayah:</label>
-                <input required type="text" class="form-control" id="nama_ayah" name="nama_ayah" placeholder="Enter ...">
+                <input type="text" value="{{ set_value('nama_ayah') }}" class="form-control" id="nama_ayah" name="nama_ayah" placeholder="Enter ...">
                 <label class="col-form-label" for="nama">Nama Ibu:</label>
-                <input required type="text" class="form-control" id="nama_ibu" name="nama_ibu" placeholder="Enter ...">
+                <input type="text" value="{{ set_value('nama_ibu') }}" class="form-control" id="nama_ibu" name="nama_ibu" placeholder="Enter ...">
             </div>
             <h4>Isi Alamat Siswa</h4>
             <!-- inline input -->
@@ -158,7 +158,7 @@
                     <label for="jalan">
                         Jalan:
                     </label>
-                    <input required type="text" class="form-control @isset($error) is-invalid @endisset" placeholder="Enter ..." id="jalan" name="jalan">
+                    <input type="text" value="{{ set_value('jalan') }}" class="form-control" placeholder="Enter ..." id="jalan" name="jalan">
                     </div>
                 </div>
                 <div class="col-sm-6">
@@ -167,7 +167,7 @@
                     <label for="kecamatan">
                         Kecamatan:
                     </label>
-                    <input required type="text" class="form-control @isset($error) is-invalid @endisset" placeholder="Optional ..." id="kecamatan" name="kecamatan">
+                    <input type="text" value="{{ set_value('kecamatan') }}" class="form-control" placeholder="Optional ..." id="kecamatan" name="kecamatan">
                     </div>
                 </div>
                 <div class="col-sm-6">
@@ -176,7 +176,7 @@
                     <label for="kelurahan">
                         Kelurahan:
                     </label>
-                    <input required type="text" class="form-control @isset($error) is-invalid @endisset" placeholder="Optional ..." id="kelurahan" name="kelurahan">
+                    <input type="text" value="{{ set_value('kelurahan') }}" class="form-control" placeholder="Optional ..." id="kelurahan" name="kelurahan">
                     </div>
                 </div>
                 <div class="col-sm-6">
@@ -185,7 +185,7 @@
                     <label for="kota">
                         Kota:
                     </label>
-                    <input required type="text" class="form-control @isset($error) is-invalid @endisset" placeholder="Enter ..." id="kota" name="kota">
+                    <input type="text" value="{{ set_value('kota') }}" class="form-control" placeholder="Enter ..." id="kota" name="kota">
                     </div>
                 </div>
                 <div class="col-sm-6">
@@ -194,7 +194,7 @@
                     <label for="provinsi">
                         Provinsi:
                     </label>
-                    <input required type="text" class="form-control @isset($error) is-invalid @endisset" placeholder="Enter ..." id="provinsi" name="provinsi">
+                    <input type="text" value="{{ set_value('provinsi') }}" class="form-control" placeholder="Enter ..." id="provinsi" name="provinsi">
                     </div>
                 </div>
             </div>
@@ -271,8 +271,8 @@ $(document).ready(function() {
         alert("Data berhasil ditambahkan");
         window.location.href = "{{ site_url('dashboard') }}";
       },
-      error: function(xhr, status, error) {
-        alert("Data gagal ditambahkan: Kemungkinan anda memasukan nis atau nisn yang sudah terdaftar");
+      error: function(response) {
+        alert("Data gagal ditambahkan: " + response.message);
       }
     });
   });

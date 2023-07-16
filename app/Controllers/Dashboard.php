@@ -20,20 +20,59 @@ class Dashboard extends BaseController
 
     public function index()
     {
+        // Memanggil view
         return blade_view('admin/dashboard', [
             'dashboard' => true,
         ]);
     }
     public function create()
     {
+        // Memanggil view
         return blade_view('admin/create', [
             'create' => true,
+            'keyCsrfToken' => csrf_token(),
+            'valueCsrfToken' => csrf_hash(),
         ]);
     }
     public function create_data()
     {
         // Mengambil semua data post
         $all_data = $this->request->getPost();
+
+        // Membuat aturan untuk validasi data
+        $rules = [
+            'nis'         => 'required',
+            'nisn'        => 'required',
+            'agama'       => 'required',
+            'no_telp'     => 'required',
+            'gender'      => 'required',
+            'status_anak' => 'required',
+            'status_data' => 'required',
+            'nama_ayah'   => 'required',
+            'nama_ibu'    => 'required',
+            'tempat'      => 'required',
+            'hari'        => 'required',
+            'bulan'       => 'required',
+            'tahun'       => 'required',
+            'jalan'       => 'required',
+            'kecamatan'   => 'required',
+            'kelurahan'   => 'required',
+            'kota'        => 'required',
+            'provinsi'    => 'required',
+        ];
+
+        if ($this->validate($rules)) {
+
+            // Berikan respons JSON
+            $response = [
+                'status' => 'error',
+                'message' => 'Data anda memasukan data yang tidak valid',
+            ];
+        
+            // Mengirim respons dalam format JSON
+            return $this->response->setJSON($response);
+
+        }
 
         // Insert data
         $this->Siswa->doInsertData($all_data);

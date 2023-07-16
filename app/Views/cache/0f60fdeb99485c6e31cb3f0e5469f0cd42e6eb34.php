@@ -22,6 +22,7 @@
 
 <section class="content row">
     <form method="post" id="formIsiData" class="container-fluid col-sm-10 justify-content-center">
+    <?= csrf_field() ?>
     <!-- general form -->
     <div class="card card-success">
         <div class="card-header">
@@ -29,12 +30,11 @@
         </div>
         <!-- /.card-header -->
         <div class="card-body">
-            <?= csrf_field() ?>
             <!-- input states -->
             <h4>Isi Data Siswa</h4>
             <div class="form-group">
                 <label class="col-form-label" for="nama">Nama Lengkap:</label>
-                <input required type="text" class="form-control" name="nama" id="nama" placeholder="Enter ...">
+                <input type="text" class="form-control" name="nama" id="nama" placeholder="Enter ...">
             </div>
             <!-- inline input -->
             <div class="row">
@@ -44,7 +44,7 @@
                     <label for="nis">
                         NIS:
                     </label>
-                    <input required type="text" class="form-control <?php if(isset($error)): ?> is-invalid <?php endif; ?>" placeholder="Enter ..." id="nis" name="nis">
+                    <input type="text" class="form-control" placeholder="Enter ..." id="nis" name="nis">
                     </div>
                 </div>
                 <div class="col-sm-6">
@@ -53,7 +53,7 @@
                     <label for="nisn">
                         NISN:
                     </label>
-                    <input required type="text" class="form-control <?php if(isset($error)): ?> is-invalid <?php endif; ?>" placeholder="Enter ..." id="nisn" name="nisn">
+                    <input type="text" class="form-control" placeholder="Enter ..." id="nisn" name="nisn">
                     </div>
                 </div>
                 <div class="col-sm-6">
@@ -62,7 +62,7 @@
                     <label for="agama">
                         Agama:
                     </label>
-                    <input required type="text" class="form-control <?php if(isset($error)): ?> is-invalid <?php endif; ?>" placeholder="Enter ..." id="agama" name="agama">
+                    <input type="text" class="form-control" placeholder="Enter ..." id="agama" name="agama">
                     </div>
                 </div>
                 <div class="col-sm-6">
@@ -71,7 +71,7 @@
                     <label for="no_telp">
                         Nomor Telepon:
                     </label>
-                    <input required type="text" class="form-control <?php if(isset($error)): ?> is-invalid <?php endif; ?>" placeholder="Enter ..." id="no_telp" name="no_telp">
+                    <input type="text" class="form-control" placeholder="Enter ..." id="no_telp" name="no_telp">
                     </div>
                 </div>
             </div>
@@ -112,7 +112,7 @@
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label class="col-form-label" for="tempat_lahir">Tempat Lahir:</label>
-                        <input required type="text" class="form-control" id="tempat_lahir" name="tempat_lahir" placeholder="Enter ...">
+                        <input type="text" class="form-control" id="tempat_lahir" name="tempat_lahir" placeholder="Enter ...">
                     </div>
                 </div>
                 <div class="col-sm-6">
@@ -143,9 +143,9 @@
             </div>
             <div class="form-group">
                 <label class="col-form-label" for="nama">Nama Ayah:</label>
-                <input required type="text" class="form-control" id="nama_ayah" name="nama_ayah" placeholder="Enter ...">
+                <input type="text" class="form-control" id="nama_ayah" name="nama_ayah" placeholder="Enter ...">
                 <label class="col-form-label" for="nama">Nama Ibu:</label>
-                <input required type="text" class="form-control" id="nama_ibu" name="nama_ibu" placeholder="Enter ...">
+                <input type="text" class="form-control" id="nama_ibu" name="nama_ibu" placeholder="Enter ...">
             </div>
             <h4>Isi Alamat Siswa</h4>
             <!-- inline input -->
@@ -156,7 +156,7 @@
                     <label for="jalan">
                         Jalan:
                     </label>
-                    <input required type="text" class="form-control <?php if(isset($error)): ?> is-invalid <?php endif; ?>" placeholder="Enter ..." id="jalan" name="jalan">
+                    <input type="text" class="form-control" placeholder="Enter ..." id="jalan" name="jalan">
                     </div>
                 </div>
                 <div class="col-sm-6">
@@ -165,7 +165,7 @@
                     <label for="kecamatan">
                         Kecamatan:
                     </label>
-                    <input required type="text" class="form-control <?php if(isset($error)): ?> is-invalid <?php endif; ?>" placeholder="Optional ..." id="kecamatan" name="kecamatan">
+                    <input type="text" class="form-control" placeholder="Optional ..." id="kecamatan" name="kecamatan">
                     </div>
                 </div>
                 <div class="col-sm-6">
@@ -174,7 +174,7 @@
                     <label for="kelurahan">
                         Kelurahan:
                     </label>
-                    <input required type="text" class="form-control <?php if(isset($error)): ?> is-invalid <?php endif; ?>" placeholder="Optional ..." id="kelurahan" name="kelurahan">
+                    <input type="text" class="form-control" placeholder="Optional ..." id="kelurahan" name="kelurahan">
                     </div>
                 </div>
                 <div class="col-sm-6">
@@ -183,7 +183,7 @@
                     <label for="kota">
                         Kota:
                     </label>
-                    <input required type="text" class="form-control <?php if(isset($error)): ?> is-invalid <?php endif; ?>" placeholder="Enter ..." id="kota" name="kota">
+                    <input type="text" class="form-control" placeholder="Enter ..." id="kota" name="kota">
                     </div>
                 </div>
                 <div class="col-sm-6">
@@ -192,7 +192,7 @@
                     <label for="provinsi">
                         Provinsi:
                     </label>
-                    <input required type="text" class="form-control <?php if(isset($error)): ?> is-invalid <?php endif; ?>" placeholder="Enter ..." id="provinsi" name="provinsi">
+                    <input type="text" class="form-control" placeholder="Enter ..." id="provinsi" name="provinsi">
                     </div>
                 </div>
             </div>
@@ -269,8 +269,8 @@ $(document).ready(function() {
         alert("Data berhasil ditambahkan");
         window.location.href = "<?php echo e(site_url('dashboard')); ?>";
       },
-      error: function(xhr, status, error) {
-        alert("Data gagal ditambahkan: Kemungkinan anda memasukan nis atau nisn yang sudah terdaftar");
+      error: function(response) {
+        alert("Data gagal ditambahkan: " + response.message);
       }
     });
   });

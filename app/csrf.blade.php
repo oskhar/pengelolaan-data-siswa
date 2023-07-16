@@ -1,0 +1,1 @@
+<input type="hidden" name="{{ $keyCsrfToken }}" value="{{ $valueCsrfToken }}">
