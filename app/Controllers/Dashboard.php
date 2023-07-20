@@ -4,6 +4,8 @@ namespace App\Controllers;
 use App\Models\Siswa;
 use App\Models\Alamat;
 use App\Models\DataKelahiran;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class Dashboard extends BaseController
 {
@@ -17,12 +19,102 @@ class Dashboard extends BaseController
         $this->Alamat = new Alamat();
         $this->DataKelahiran = new DataKelahiran();
     }
+    public function export_excel()
+    {
+        // Menyiapkan data yang ingin diexport
+        $data_siswa = $this->Siswa->findAll();
+        $data_alamat = $this->Alamat;
+        $data_kelahiran = $this->DataKelahiran;
+        
+        // Menggabungkan data siswa, alamat siswa, dan data kelahiran siswa
+        $all_data = [];
+        
+        foreach ($data_siswa as $siswa) {
+            // Mengambil data alamat siswa berdasarkan siswa_id
+            $alamatSiswa = $data_alamat->where('nis_siswa', $siswa['nis'])->findAll();
+            
+            // Mengambil data kelahiran siswa berdasarkan siswa_id
+            $kelahiranSiswa = $data_kelahiran->where('nis_siswa', $siswa['nis'])->findAll();
+            
+            // Menggabungkan data siswa, alamat siswa, dan data kelahiran siswa menjadi satu array
+            foreach ($alamatSiswa as $alamat) {
+                foreach ($kelahiranSiswa as $kelahiran) {
+                    $all_data[] = array_merge($siswa, $alamat, $kelahiran);
+                }
+            }
+        }
 
+        // Membuat objek Spreadsheet
+        $spreadsheet = new Spreadsheet();
+        $sheet = $spreadsheet->getActiveSheet();
+
+        // Menulis judul data ke dalam sel-sel
+        $sheet->setCellValue('A1', 'nama');
+        $sheet->setCellValue('B1', 'nis');
+        $sheet->setCellValue('C1', 'nisn');
+        $sheet->setCellValue('D1', 'agama');
+        $sheet->setCellValue('E1', 'no telp');
+        $sheet->setCellValue('F1', 'gender');
+        $sheet->setCellValue('G1', 'status anak');
+        $sheet->setCellValue('H1', 'status data');
+        $sheet->setCellValue('I1', 'nama ayah');
+        $sheet->setCellValue('J1', 'nama ibu');
+        $sheet->setCellValue('K1', 'tempat');
+        $sheet->setCellValue('L1', 'hari');
+        $sheet->setCellValue('M1', 'bulan');
+        $sheet->setCellValue('N1', 'tahun');
+        $sheet->setCellValue('O1', 'jalan');
+        $sheet->setCellValue('P1', 'kecamatan');
+        $sheet->setCellValue('Q1', 'kelurahan');
+        $sheet->setCellValue('R1', 'kota');
+        $sheet->setCellValue('S1', 'provinsi');
+
+        // Menulis data ke dalam sel-sel
+        $row = 2;
+        foreach ($all_data as $data) {
+            $sheet->setCellValue('A' . $row, $data['nama']);
+            $sheet->setCellValue('B' . $row, $data['nis']);
+            $sheet->setCellValue('C' . $row, $data['nisn']);
+            $sheet->setCellValue('D' . $row, $data['agama']);
+            $sheet->setCellValue('E' . $row, $data['no_telp']);
+            $sheet->setCellValue('F' . $row, ['Perempuan', 'Laki Laki'][$data['gender']]);
+            $sheet->setCellValue('G' . $row, ['Angkat', 'Kandung'][$data['status_anak']]);
+            $sheet->setCellValue('H' . $row, ['Tidak Aktif', 'Aktif'][$data['status_data']]);
+            $sheet->setCellValue('I' . $row, $data['nama_ayah']);
+            $sheet->setCellValue('J' . $row, $data['nama_ibu']);
+            $sheet->setCellValue('K' . $row, $data['tempat']);
+            $sheet->setCellValue('L' . $row, $data['hari']);
+            $sheet->setCellValue('M' . $row, $data['bulan']);
+            $sheet->setCellValue('N' . $row, $data['tahun']);
+            $sheet->setCellValue('O' . $row, $data['jalan']);
+            $sheet->setCellValue('P' . $row, $data['kecamatan']);
+            $sheet->setCellValue('Q' . $row, $data['kelurahan']);
+            $sheet->setCellValue('R' . $row, $data['kota']);
+            $sheet->setCellValue('S' . $row, $data['provinsi']);
+            $row++;
+        }
+
+        // Mengatur header response
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment;filename="data.xlsx"');
+        header('Cache-Control: max-age=0');
+
+        // Menggunakan writer untuk menulis objek Spreadsheet ke dalam file Excel
+        $writer = new Xlsx($spreadsheet);
+        $writer->save('php://output');
+    }
+    public function import_excel()
+    {
+        
+    }
     public function index()
     {
+        // Mengambil data siswa
+        $data_siswa = $this->Siswa->findAll();
         // Memanggil view
         return blade_view('admin/dashboard', [
             'dashboard' => true,
+            'data_siswa' => $data_siswa,
         ]);
     }
     public function create()
@@ -40,8 +132,8 @@ class Dashboard extends BaseController
         $all_data = $this->request->getPost();
 
         // Membuat aturan untuk validasi data
-        $rules = [
-            'nama'        => 'required|realpha',
+        $validation_rules = [
+            'nama'        => 'required|alpha_spaces',
             'nis'         => 'required',
             'nisn'        => 'required',
             'agama'       => 'required',
@@ -51,7 +143,7 @@ class Dashboard extends BaseController
             'status_data' => 'required',
             'nama_ayah'   => 'required',
             'nama_ibu'    => 'required',
-            'tempat'      => 'required',
+            'tempat_lahir'=> 'required',
             'hari'        => 'required',
             'bulan'       => 'required',
             'tahun'       => 'required',
@@ -61,20 +153,24 @@ class Dashboard extends BaseController
             'kota'        => 'required',
             'provinsi'    => 'required',
         ];
+        $validation =  \Config\Services::validation();
+        $validation->setRules($validation_rules);
 
-        if ($this->validate($rules)) {
-
-            $errors = $this->validator->errors();
+        // Hentikan program jika error
+        if (!$validation->withRequest($this->request)->run()) {
             
+            // Mendapatkan pesan error
+            $errors = $validation->getErrors();
+
             // Berikan respons JSON
             $response = [
-                'status' => 'error',
-                'message' => 'Data anda memasukan data yang tidak valid',
+                'success' => false,
+                'message' => 'Validasi gagal',
+                'errors' => $errors
             ];
         
             // Mengirim respons dalam format JSON
-            echo json_encode($response);
-            return false;
+            return $this->response->setJSON($response);
 
         }
 
@@ -85,13 +181,12 @@ class Dashboard extends BaseController
 
         // Berikan respons JSON
         $response = [
-            'status' => 'success',
-            'message' => 'Data berhasil ditambahkan'
+            'success' => true,
+            'message' => 'Validasi Berhasil'
         ];
     
         // Mengirim respons dalam format JSON
-        echo json_encode($response);
-        return true;
+        return $this->response->setJSON($response);
     }
     public function update($data_nis = "", $recover_data = '')
     {
@@ -125,16 +220,62 @@ class Dashboard extends BaseController
         // Mengambil semua data post
         if (empty($all_data))
             $all_data = $this->request->getPost();
+    
+            // Membuat aturan untuk validasi data
+            $validation_rules = [
+                'nama'        => 'required|alpha_spaces',
+                'nis'         => 'required',
+                'nisn'        => 'required',
+                'agama'       => 'required',
+                'no_telp'     => 'required',
+                'gender'      => 'required',
+                'status_anak' => 'required',
+                'status_data' => 'required',
+                'nama_ayah'   => 'required',
+                'nama_ibu'    => 'required',
+                'tempat_lahir'=> 'required',
+                'hari'        => 'required',
+                'bulan'       => 'required',
+                'tahun'       => 'required',
+                'jalan'       => 'required',
+                'kecamatan'   => 'required',
+                'kelurahan'   => 'required',
+                'kota'        => 'required',
+                'provinsi'    => 'required',
+            ];
+            $validation =  \Config\Services::validation();
+            $validation->setRules($validation_rules);
+    
+            // Hentikan program jika error
+            if (!$validation->withRequest($this->request)->run()) {
+                
+                // Mendapatkan pesan error
+                $errors = $validation->getErrors();
+    
+                // Berikan respons JSON
+                $response = [
+                    'success' => false,
+                    'message' => 'Validasi gagal',
+                    'errors' => $errors
+                ];
+            
+                // Mengirim respons dalam format JSON
+                return $this->response->setJSON($response);
+    
+            }
 
         // Insert data
         $this->Siswa->doUpdateData($all_data['old_nis'], $all_data);
         $this->Alamat->doUpdateData($all_data['old_nis'], $all_data);
         $this->DataKelahiran->doUpdateData($all_data['old_nis'], $all_data);
 
+        // Mendapatkan pesan error
+        $errors = $validation->getErrors();
+
         // Berikan respons JSON
         $response = [
-            'status' => 'success',
-            'message' => 'Data berhasil ditambahkan'
+            'success' => true,
+            'message' => 'Update Data Berhasil',
         ];
     
         // Mengirim respons dalam format JSON

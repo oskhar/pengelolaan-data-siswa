@@ -2,6 +2,8 @@
 <?php $__env->startSection('mainContent'); ?>
 <!-- daterange picker -->
 <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
+<script src="<?php echo e(base_url('node_modules/sweetalert2/dist/sweetalert2.min.js')); ?>"></script>
+<link rel="stylesheet" href="<?php echo e(base_url('node_modules/sweetalert2/dist/sweetalert2.min.css')); ?>">
 
 <!-- Content Header (Page header) -->
 <section class="content-header">
@@ -208,9 +210,9 @@
     </div>
     </form>
 </section>
-  
 <script type="text/javascript">
 $(document).ready(function() {
+
   $('#formIsiData').submit(function(event) {
     // Mencegah pengiriman formulir secara default
     event.preventDefault();
@@ -265,19 +267,42 @@ $(document).ready(function() {
 
     // Kirim data ke controller menggunakan AJAX
     $.ajax({
-      url: '<?php echo e(site_url("dashboard/create_data")); ?>',
-      type: 'POST',
-      data: data,
-      dataType: 'json',
-      success: function(response) {
-        alert("Data berhasil ditambahkan");
-        window.location.href = "<?php echo e(site_url('dashboard')); ?>";
-      },
-      error: function(response) {
-        alert("Data gagal ditambahkan: " + response.message);
-      }
+        url: '<?php echo e(site_url("dashboard/create_data")); ?>',
+        type: 'POST',
+        data: data,
+        dataType: 'json',
+        success: function(response) {
+            if (!response.success) {
+                // Mengubah pesan error ke dalam bentuk yang lebih mudah dibaca
+                let errors = Object.keys(response.errors).map(function(key) {
+                    return key + ' => ' + response.errors[key];
+                }).join('<br>');
+                // errors = errors.replace('/","/g', '\n');
+
+                // Menampilkan pesan error AJAX
+                Swal.fire({
+                    title: 'Data gagal ditambahkan!',
+                    html: errors,
+                    icon: 'error',
+                    confirmButtonText: 'Ok',
+                });
+            } else {
+                // Validasi berhasil, melakukan tindakan lain
+                Swal.fire('Data Berhasil Ditambahkan!', '', 'success');
+                window.location.href = '<?php echo e(base_url("dashboard")); ?>';
+            }
+        },
+        error: function(xhr, status, error) {
+            // Menampilkan pesan error AJAX
+            Swal.fire({
+                title: 'Data gagal ditambahkan!',
+                text: ""+xhr.textResponse,
+                icon: 'error',
+                confirmButtonText: 'Ok',
+            });
+        }
     });
-  });
+    });
 });
 
 </script>

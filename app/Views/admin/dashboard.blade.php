@@ -2,7 +2,17 @@
 
 @section('title', 'Halaman Dashboard')
 @section('mainContent')
-    
+
+  <style>
+    .buttons-excel {
+      background: var(--primary);
+    }.buttons-excel::before {
+      content: "Unduh Sebagai ";
+    }
+    .card-outline-left {
+      border-left: 0.3rem solid var(--success);
+    }
+  </style>
   <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <link rel="stylesheet" href="plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
@@ -23,83 +33,67 @@
     </div><!-- /.container-fluid -->
   </section>
 
+<section class="content">
+  <div class="container-fluid">
+    <div class="card card-outline-left">
+      <div class="card-primary p-4">
+        <h3 class="card-title">DataTable with default features</h3>
+      </div>
+    </div>
+  </div>
+</section>
   <section class="content">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-12">
-              <div class="card">
-                <div class="card-header">
-                  <h3 class="card-title">DataTable with default features</h3>
-                </div>
-                <!-- /.card-header -->
-                <div class="card-body">
-                  <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
-                    <div class="row">
-                    <div class="col-sm-12 col-md-6">
-                    <div class="dt-buttons btn-group flex-wrap">               <button class="btn btn-secondary buttons-copy buttons-html5" tabindex="0" aria-controls="example1" type="button">
-                    <span>Copy</span>
-                  </button> <button class="btn btn-secondary buttons-csv buttons-html5" tabindex="0" aria-controls="example1" type="button">
-                    <span>CSV</span>
-                  </button> <button class="btn btn-secondary buttons-excel buttons-html5" tabindex="0" aria-controls="example1" type="button">
-                    <span>Excel</span>
-                  </button> <button class="btn btn-secondary buttons-pdf buttons-html5" tabindex="0" aria-controls="example1" type="button">
-                    <span>PDF</span>
-                  </button> <button class="btn btn-secondary buttons-print" tabindex="0" aria-controls="example1" type="button">
-                    <span>Print</span>
-                  </button> <div class="btn-group">
-                    <button class="btn btn-secondary buttons-collection dropdown-toggle buttons-colvis" tabindex="0" aria-controls="example1" type="button" aria-haspopup="true">
-                    <span>Column visibility</span>
-                    <span class="dt-down-arrow">
-                    </span>
-                  </button>
-                  </div> </div>
-                </div>
-                  <div class="col-sm-12 col-md-6">
-                    <div id="example1_filter" class="dataTables_filter">
-                    <label>Search:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="example1">
-                  </label>
-                  </div>
-                </div>
-                </div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <!-- /.card-header -->
+          <div class="card">
+            <div class="card-body">
                   <div class="row">
-                    <div class="col-sm-12">
-                    <table class="table table-bordered table-striped dataTable dtr-inline" aria-describedby="example1_info" id="example1">
-                    <thead>
-                    <tr>
-                      <th class="sorting sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">NIS</th>
-                      <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">NISN</th>
-                      <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Nama Lengkap</th>
-                      <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Gender</th>
-                      <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Agama</th>
-                      <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Nomor Telepon</th>
-                      <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Status Anak</th>
-                      <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Status Data</th>
-                      <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Aksi</th>
-                    </tr>
-                    </thead>
-                    <tbody></tbody>
-                  </table>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-sm-12 col-md-5">
-                  <div class="dataTables_info" id="example1_info" role="status" aria-live="polite">Last Update</div></div><div class="col-sm-12 col-md-7">
-                    <div class="dataTables_paginate paging_simple_numbers" id="example1_paginate">
-                    <ul class="pagination">
-                    <li class="paginate_button page-item previous disabled" id="example1_previous">
-                    <a href="#" aria-controls="example1" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>
-                  </li>
-                    <li class="paginate_button page-item active">
-                    <a href="#" aria-controls="example1" data-dt-idx="1" tabindex="0" class="page-link">1</a>
-                  </li>
-                    <li class="paginate_button page-item next" id="example1_next">
-                    <a href="#" aria-controls="example1" data-dt-idx="7" tabindex="0" class="page-link">Next</a>
-                  </li>
-                  </ul>
+                    <a href="{{ base_url('dashboard/create') }}" class="btn border-primary text-primary btn-sm col-sm-1 p-2 ml-2" onmouseover="this.classList.add('btn-primary');this.classList.remove('text-primary')" onmouseout="this.classList.remove('btn-primary');this.classList.add('text-primary')">Tambah Data</a>
+                    <a href="{{ base_url('dashboard/export_excel') }}" class="btn border-primary text-primary btn-sm col-sm-1 p-2 ml-2" onmouseover="this.classList.add('btn-primary');this.classList.remove('text-primary')" onmouseout="this.classList.remove('btn-primary');this.classList.add('text-primary')">Export Data</a>
+                    <a href="" class="btn border-primary text-primary btn-sm col-sm-1 p-2 ml-2" onmouseover="this.classList.add('btn-primary');this.classList.remove('text-primary')" onmouseout="this.classList.remove('btn-primary');this.classList.add('text-primary')">Import Data</a>
                   </div>
-                </div>
-                </div>
-                </div>
+                  <table id="example1" class="table table-bordered table-striped">
+                    <thead>
+                      <tr>
+                        <th>No</th>
+                        <th>NIS</th>
+                        <th>NISN</th>
+                        <th>Nama Lengkap</th>
+                        <th>Gender</th>
+                        <th>Agama</th>
+                        <th>Nomor Telepon</th>
+                        <th>Status Data</th>
+                        <th>Aksi</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      @foreach($data_siswa as $data)
+                      <tr>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $data['nis'] }}</td>
+                        <td>{{ $data['nisn'] }}</td>
+                        <td>{{ $data['nama'] }}</td>
+                        <td>{{ ['Perempuan', 'Laki Laki'][$data['gender']] }}</td>
+                        <td>{{ $data['agama'] }}</td>
+                        <td>{{ $data['no_telp'] }}</td>
+                        <td>{{ ['Aktif', 'Tidak Aktif'][$data['status_data']] }}</td>
+                        <td>
+                          <a onmouseover="this.classList.add('btn-info');this.classList.remove('text-info')" onmouseout="this.classList.remove('btn-info');this.classList.add('text-info')" href="{{ base_url('/dashboard/detail') }}/{{ $data['nis'] }}" class="btn border-info text-info btn-sm">
+                            <i class="fas fa-eye"></i>
+                          </a>
+                          <a onmouseover="this.classList.add('btn-primary');this.classList.remove('text-primary')" onmouseout="this.classList.remove('btn-primary');this.classList.add('text-primary')" href="{{ base_url('/dashboard/update') }}/{{ $data['nis'] }}" class="btn border-primary text-primary btn-sm">
+                            <i class="fas fa-pencil-alt"></i>
+                          </a>
+                          <a onmouseover="this.classList.add('btn-danger');this.classList.remove('text-danger')" onmouseout="this.classList.remove('btn-danger');this.classList.add('text-danger')" onclick="doSoftDelete(\'{{ $data['nis'] }}\')" class="btn border-danger text-danger btn-sm">
+                            <i class="fas fa-trash"></i>
+                          </a>
+                        </td>
+                      </tr>
+                      @endforeach
+                    </tbody>
+                  </table>
                 </div>
                 <!-- /.card-body -->
               </div>
@@ -107,63 +101,7 @@
         </div>
       </div>
   </section>
-
-  <!-- jQuery -->
-  <script src="plugins/jquery/jquery.min.js"></script>
-  <!-- Bootstrap 4 -->
-  <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <!-- DataTables  & Plugins -->
-  <script src="plugins/datatables/jquery.dataTables.min.js"></script>
-  <script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-  <script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-  <script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-  <script src="plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-  <script src="plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-  <script src="plugins/jszip/jszip.min.js"></script>
-  <script src="plugins/pdfmake/pdfmake.min.js"></script>
-  <script src="plugins/pdfmake/vfs_fonts.js"></script>
-  <script src="plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-  <script src="plugins/datatables-buttons/js/buttons.print.min.js"></script>
-  <script src="plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
   <script>
-    $(document).ready(function () {
-      $.ajax({
-        url: "{{ site_url('dashboard/get_data_ajax') }}",
-        dataType: "json",
-        success: function(response)
-        {
-          // Menambahkan data ke dalam tabel
-          $.each(response, function(index, siswa) {
-            var row = $('<tr>');
-            $('<td>').text(siswa.nis).appendTo(row);
-            $('<td>').text(siswa.nisn).appendTo(row);
-            $('<td>').text(siswa.nama).appendTo(row);
-            $('<td>').text(["Perempuan", "Laki Laki"][siswa.gender]).appendTo(row);
-            $('<td>').text(siswa.agama).appendTo(row);
-            $('<td>').text(siswa.no_telp).appendTo(row);
-            $('<td>').text(["Lulus", "Pelajar"][siswa.status_anak]).appendTo(row);
-            $('<td>').text(["Angkat", "Kandung"][siswa.status_data]).appendTo(row);
-            row.append(`<td>
-              <a href="{{ base_url('/dashboard/detail') }}/' + siswa.nis + '" class="btn btn-info btn-sm">
-                <i class="fas fa-eye"></i>
-              </a>
-              <a href="{{ base_url('/dashboard/update') }}/' + siswa.nis + '" class="btn btn-primary btn-sm">
-                <i class="fas fa-pencil-alt"></i>
-              </a>
-              <a onclick="doSoftDelete(\'' + siswa.nis + '\')" class="btn btn-danger btn-sm">
-                <i class="fas fa-trash"></i>
-              </a>
-            </td>`);
-            var targetTbody = $('#example1 tbody');
-            row.appendTo(targetTbody);
-          });
-        },
-        error: function()
-        {
-          alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
-        }
-      });
-    });
     function doSoftDelete(nis) {
       // Membuat data dictionary
       let data = {nis: nis};
@@ -184,11 +122,28 @@
       });
     }
   </script>
+  <!-- DataTables  & Plugins -->
+  <script src="plugins/datatables/jquery.dataTables.min.js"></script>
+  <script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+  <script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+  <script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+  <script src="plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+  <script src="plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+  <script src="plugins/jszip/jszip.min.js"></script>
+  <script src="plugins/pdfmake/pdfmake.min.js"></script>
+  <script src="plugins/pdfmake/vfs_fonts.js"></script>
+  <script src="plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+  <script src="plugins/datatables-buttons/js/buttons.print.min.js"></script>
+  <script src="plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
   <script>
     $(function () {
       $("#example1").DataTable({
-        "responsive": true, "lengthChange": false, "autoWidth": false,
-        "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+        "responsive": true,
+        "lengthChange": false,
+        "autoWidth": false,
+        "language": {
+            "info": 'Last updated data on'
+        }
       }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
     });
   </script>

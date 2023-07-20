@@ -236,34 +236,34 @@
                with font-awesome or any other icon font library -->
           <li class="nav-item menu-open">
             <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <i class="nav-icon fas fa-book"></i>
               <p>
-                Dashboard
+                Data Siswa
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="{{ base_url('/dashboard') }}" class="nav-link @isset($dashboard) active @endisset">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="ml-2 far fa-eye nav-icon"></i>
                   <p>Read</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{{ base_url('/dashboard/create') }}" class="nav-link @isset($create) active @endisset">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="ml-2 fas fa-plus-square nav-icon"></i>
                   <p>Create</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{{ base_url('/dashboard/update') }}" class="nav-link @isset($update) active @endisset">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="ml-2 fas fa-pencil-alt nav-icon"></i>
                   <p>Update</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{{ base_url('/dashboard/trash') }}" class="nav-link @isset($trash) active @endisset">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="ml-2 fas fa-trash nav-icon"></i>
                   <p>Trash</p>
                 </a>
               </li>

@@ -46,6 +46,7 @@ $routes->post('/dashboard/create_data', 'Dashboard::create_data');
 $routes->post('/dashboard/update_data', 'Dashboard::update_data');
 $routes->post('/dashboard/soft_delete', 'Dashboard::soft_delete');
 $routes->post('/dashboard/recover_data', 'Dashboard::recover_data');
+$routes->get('/dashboard/export_excel', 'Dashboard::export_excel');
 
 /*
  * --------------------------------------------------------------------

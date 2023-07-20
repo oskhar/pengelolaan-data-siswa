@@ -31,14 +31,11 @@
             @isset($nis)
             <!-- /.card-header -->
             <div class="card-body">
-                <!-- hidden input -->
-                <input type="hidden" name="old_nis" id="old_nis" value="{{ $nis }}">
-                <?= csrf_field() ?>
                 <!-- input states -->
-                <h4>Isi Data Siswa ({{ $nis }})</h4>
+                <h4>Isi Data Siswa</h4>
                 <div class="form-group">
                     <label class="col-form-label" for="nama">Nama Lengkap:</label>
-                    <input required type="text" class="form-control" name="nama" id="nama" placeholder="Enter ..." value="{{ $data['nama'] }}">
+                    <input value="{{ $data['nama'] }}" type="text" class="form-control" name="nama" id="nama" placeholder="Enter ...">
                 </div>
                 <!-- inline input -->
                 <div class="row">
@@ -48,7 +45,7 @@
                         <label for="nis">
                             NIS:
                         </label>
-                        <input required type="text" class="form-control @isset($error) is-invalid @endisset" placeholder="Enter ..." id="nis" name="nis" value="{{ $data['nis'] }}">
+                        <input value="{{ $data['nis'] }}" type="number" class="form-control" placeholder="Enter ..." id="nis" name="nis">
                         </div>
                     </div>
                     <div class="col-sm-6">
@@ -57,25 +54,29 @@
                         <label for="nisn">
                             NISN:
                         </label>
-                        <input required type="text" class="form-control @isset($error) is-invalid @endisset" placeholder="Enter ..." id="nisn" name="nisn" value="{{ $data['nisn'] }}">
+                        <input value="{{ $data['nisn'] }}" type="number" class="form-control" placeholder="Enter ..." id="nisn" name="nisn">
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <!-- text input -->
                         <div class="form-group">
-                        <label for="agama">
-                            Agama:
-                        </label>
-                        <input required type="text" class="form-control @isset($error) is-invalid @endisset" placeholder="Enter ..." id="agama" name="agama" value="{{ $data['agama'] }}">
+                            <label>Agama</label>
+                            <select class="form-control select2bs4 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true" name="agama" id="agama">
+                                <option value="Islam" @if ($data['agama'] == "Islam") selected="selected" @endif>Islam</option>
+                                <option value="Kristen" @if ($data['agama'] == "Kristen") selected="selected" @endif>Kristen</option>
+                                <option value="Hindu" @if ($data['agama'] == "Hindu") selected="selected" @endif>Hindu</option>
+                                <option value="Budha" @if ($data['agama'] == "Budha") selected="selected" @endif>Budha</option>
+                                <option value="Konghucu" @if ($data['agama'] == "Konghucu") selected="selected" @endif>Konghucu</option>
+                            </select>
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <!-- text input -->
                         <div class="form-group">
                         <label for="no_telp">
-                            Nomor Telepon:
+                            Nomor Telepon (+62):
                         </label>
-                        <input required type="text" class="form-control @isset($error) is-invalid @endisset" placeholder="Enter ..." id="no_telp" name="no_telp" value="{{ $data['no_telp'] }}">
+                        <input value="{{ $data['no_telp'] }}" type="number" class="form-control" placeholder="Enter ..." id="no_telp" name="no_telp">
                         </div>
                     </div>
                 </div>
@@ -101,11 +102,11 @@
                             <h5>Status Anak</h5>
                             <div class="form-check">
                                 <input value="1" class="form-check-input" type="radio" name="status_anak" id="status_anak" @if ($data['status_anak'] == 1) checked @endif>
-                                <label class="form-check-label">Masih Pelajar</label>
+                                <label class="form-check-label">Kandung</label>
                             </div>
                             <div class="form-check">
                                 <input value="0" class="form-check-input" type="radio" name="status_anak" id="status_anak" @if ($data['status_anak'] == 0) checked @endif>
-                                <label class="form-check-label">Sudah Lulus</label>
+                                <label class="form-check-label">Angkat</label>
                             </div>
                         </div>
                     </div>
@@ -116,14 +117,14 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label class="col-form-label" for="tempat_lahir">Tempat Lahir:</label>
-                            <input required type="text" class="form-control" id="tempat_lahir" name="tempat_lahir" placeholder="Enter ..." value="{{ $data['tempat'] }}">
+                            <input value="{{ $data['tempat'] }}" type="text" class="form-control" id="tempat_lahir" name="tempat_lahir" placeholder="Enter ...">
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label class="col-form-label">Tanggal Lahir:</label>
                             <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                                <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir" value="{{ $data['tahun']."-".$data['bulan']."-".$data['hari'] }}">
+                                <input value="{{ $data['tahun']."-".$data['bulan']."-".$data['hari'] }}" type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir" max="{{ date('Y-m-d') }}">
                             </div>
                         </div>
                     </div>
@@ -147,9 +148,9 @@
                 </div>
                 <div class="form-group">
                     <label class="col-form-label" for="nama">Nama Ayah:</label>
-                    <input required type="text" class="form-control" id="nama_ayah" name="nama_ayah" placeholder="Enter ..." value="{{ $data['nama_ayah'] }}">
+                    <input value="{{ $data['nama_ayah'] }}" type="text" class="form-control" id="nama_ayah" name="nama_ayah" placeholder="Enter ...">
                     <label class="col-form-label" for="nama">Nama Ibu:</label>
-                    <input required type="text" class="form-control" id="nama_ibu" name="nama_ibu" placeholder="Enter ..." value="{{ $data['nama_ibu'] }}">
+                    <input value="{{ $data['nama_ibu'] }}" type="text" class="form-control" id="nama_ibu" name="nama_ibu" placeholder="Enter ...">
                 </div>
                 <h4>Isi Alamat Siswa</h4>
                 <!-- inline input -->
@@ -160,7 +161,7 @@
                         <label for="jalan">
                             Jalan:
                         </label>
-                        <input required type="text" class="form-control @isset($error) is-invalid @endisset" placeholder="Enter ..." id="jalan" name="jalan" value="{{ $data['jalan'] }}">
+                        <input value="{{ $data['jalan'] }}" type="text" class="form-control" placeholder="Enter ..." id="jalan" name="jalan">
                         </div>
                     </div>
                     <div class="col-sm-6">
@@ -169,7 +170,7 @@
                         <label for="kecamatan">
                             Kecamatan:
                         </label>
-                        <input required type="text" class="form-control @isset($error) is-invalid @endisset" placeholder="Optional ..." id="kecamatan" name="kecamatan" value="{{ $data['kecamatan'] }}">
+                        <input value="{{ $data['kecamatan'] }}" type="text" class="form-control" placeholder="Optional ..." id="kecamatan" name="kecamatan">
                         </div>
                     </div>
                     <div class="col-sm-6">
@@ -178,7 +179,7 @@
                         <label for="kelurahan">
                             Kelurahan:
                         </label>
-                        <input required type="text" class="form-control @isset($error) is-invalid @endisset" placeholder="Optional ..." id="kelurahan" name="kelurahan" value="{{ $data['kelurahan'] }}">
+                        <input value="{{ $data['kelurahan'] }}" type="text" class="form-control" placeholder="Optional ..." id="kelurahan" name="kelurahan">
                         </div>
                     </div>
                     <div class="col-sm-6">
@@ -187,7 +188,7 @@
                         <label for="kota">
                             Kota:
                         </label>
-                        <input required type="text" class="form-control @isset($error) is-invalid @endisset" placeholder="Enter ..." id="kota" name="kota" value="{{ $data['kota'] }}">
+                        <input value="{{ $data['kota'] }}" type="text" class="form-control" placeholder="Enter ..." id="kota" name="kota">
                         </div>
                     </div>
                     <div class="col-sm-6">
@@ -196,7 +197,7 @@
                         <label for="provinsi">
                             Provinsi:
                         </label>
-                        <input required type="text" class="form-control @isset($error) is-invalid @endisset" placeholder="Enter ..." id="provinsi" name="provinsi" value="{{ $data['provinsi'] }}">
+                        <input value="{{ $data['provinsi'] }}" type="text" class="form-control" placeholder="Enter ..." id="provinsi" name="provinsi">
                         </div>
                     </div>
                 </div>
@@ -216,14 +217,6 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Tabel data siswa</h3>
-                </div>
-                <div class="card-header">
-                  <div class="col-sm-12 col-md-6">
-                    <form method="post" id="example1_filter" class="dataTables_filter">
-                      <label>Search:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="example1">
-                      </label>
-                    </form>
-                  </div>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -333,11 +326,34 @@ $(document).ready(function() {
             data: data,
             dataType: 'json',
             success: function(response) {
-                alert("Data berhasil diubah");
-                window.location.href = "{{ site_url('dashboard') }}";
+                if (!response.success) {
+                    // Mengubah pesan error ke dalam bentuk yang lebih mudah dibaca
+                    let errors = Object.keys(response.errors).map(function(key) {
+                        return key + ' => ' + response.errors[key];
+                    }).join('<br>');
+                    // errors = errors.replace('/","/g', '\n');
+
+                    // Menampilkan pesan error AJAX
+                    Swal.fire({
+                        title: 'Data gagal diubah!',
+                        html: errors,
+                        icon: 'error',
+                        confirmButtonText: 'Ok',
+                    });
+                } else {
+                    // Validasi berhasil, melakukan tindakan lain
+                    Swal.fire('Data berhasil diubah!', '', 'success');
+                    window.location.href = '{{ base_url("dashboard") }}';
+                }
             },
             error: function(xhr, status, error) {
-                alert("Data gagal diubah: " + xhr.status + "\n" + xhr.responseText + "\n" + error);
+                // Menampilkan pesan error AJAX
+                Swal.fire({
+                    title: 'Data gagal diubah!',
+                    text: error,
+                    icon: 'error',
+                    confirmButtonText: 'Ok',
+                });
             }
         });
     });
