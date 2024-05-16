@@ -76,10 +76,15 @@
                 <div class="col-sm-6">
                     <!-- text input -->
                     <div class="form-group">
-                    <label for="no_telp">
-                        Nomor Telepon (+62):
-                    </label>
-                    <input type="number" class="form-control" placeholder="Enter ..." id="no_telp" name="no_telp">
+                        <label>Intl US phone mask:</label>
+
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                            <span class="input-group-text"><strong>+62</strong></span>
+                            </div>
+                            <input type="text" class="form-control" data-inputmask="'mask': ['999-9999-9999 [x99999]', '+099 99 99 9999[9]-9999']" data-mask="" inputmode="text" placeholder="___-___-____ ">
+                        </div>
+                        <!-- /.input group -->
                     </div>
                 </div>
             </div>
@@ -212,8 +217,13 @@
     </div>
     </form>
 </section>
+<!-- InputMask -->
+<script src="plugins/moment/moment.min.js"></script>
+<script src="plugins/inputmask/jquery.inputmask.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
+    //Money Euro
+    $('[data-mask]').inputmask()
 
   $('#formIsiData').submit(function(event) {
     // Mencegah pengiriman formulir secara default
@@ -269,7 +279,7 @@ $(document).ready(function() {
 
     // Kirim data ke controller menggunakan AJAX
     $.ajax({
-        url: '{{ site_url("dashboard/create_data") }}',
+        url: '{{ site_url("data-siswa/create-data") }}',
         type: 'POST',
         data: data,
         dataType: 'json',
@@ -291,7 +301,7 @@ $(document).ready(function() {
             } else {
                 // Validasi berhasil, melakukan tindakan lain
                 Swal.fire('Data Berhasil Ditambahkan!', '', 'success');
-                window.location.href = '{{ base_url("dashboard") }}';
+                window.location.href = '{{ site_url("data-siswa") }}';
             }
         },
         error: function(xhr, status, error) {

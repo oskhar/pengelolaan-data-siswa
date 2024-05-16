@@ -199,76 +199,127 @@
 
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
-      <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
-    </a>
+    <!-- sidebar logo -->
+    <div class="user-panel mt-3 mb-3 pb-3 d-flex">
+      <div class="image">
+        <img src="{{ base_url('assets/images/smk3gu0ke.png') }}" class="img-circle elevation-2" alt="User Image">
+      </div>
+      <div class="info">
+        <a href="?page=home" class="d-block text-white">SMK Triguna Utama</a>
+      </div>
+    </div>
+    <!-- ./sidebar logo -->
 
     <!-- Sidebar -->
     <div class="sidebar">
-      <!-- Sidebar user panel (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-        </div>
-        <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
-        </div>
-      </div>
-
-      <!-- SidebarSearch Form -->
-      <div class="form-inline">
-        <div class="input-group" data-widget="sidebar-search">
-          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-          <div class="input-group-append">
-            <button class="btn btn-sidebar">
-              <i class="fas fa-search fa-fw"></i>
-            </button>
-          </div>
-        </div>
-      </div>
 
       <!-- Sidebar Menu -->
-      <nav class="mt-2">
+      <nav class="mt-0">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-          <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-book"></i>
+          <!-- li-main-dashboard -->
+          <li class="nav-item">
+            <a href="{{ site_url('') }}" class="nav-link">
+              <i class="nav-icon fas fa-home"></i>
               <p>
-                Data Siswa
-                <i class="right fas fa-angle-left"></i>
+                Main Dashboard
               </p>
             </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{ base_url('/dashboard') }}" class="nav-link @isset($dashboard) active @endisset">
-                  <i class="ml-2 far fa-eye nav-icon"></i>
-                  <p>Read</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ base_url('/dashboard/create') }}" class="nav-link @isset($create) active @endisset">
-                  <i class="ml-2 fas fa-plus-square nav-icon"></i>
-                  <p>Create</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ base_url('/dashboard/update') }}" class="nav-link @isset($update) active @endisset">
-                  <i class="ml-2 fas fa-pencil-alt nav-icon"></i>
-                  <p>Update</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ base_url('/dashboard/trash') }}" class="nav-link @isset($trash) active @endisset">
-                  <i class="ml-2 fas fa-trash nav-icon"></i>
-                  <p>Trash</p>
-                </a>
-              </li>
-            </ul>
           </li>
+          <!-- ./li-main-dashboard -->
+
+          <!-- li-menu-data-siswa -->
+          <li class="nav-item">
+            <a href="{{ site_url('data-siswa') }}" class="nav-link">
+              <i class="nav-icon fas fa-user-graduate"></i>
+              <p>
+                Data Siswa
+              </p>
+            </a>
+          </li>
+          <!-- li-menu-data-siswa -->
+
+          <!-- li-menu-data-pembayaran-spp -->
+          <li class="nav-item">
+            <a href="?page=pembayaran-spp" class="nav-link">
+              <i class="nav-icon fas fa-money-check-dollar"></i>
+              <p>Data Pembayaran SPP</p>
+            </a>
+          </li>
+          <!-- li-menu-data-pembayaran-spp -->
+
+          <!-- li-menu-cetak-laporan -->
+          <li class="nav-item">
+            <a href="?page=cetak-laporan" class="nav-link">
+              <i class="nav-icon fas fa-print"></i>
+              <p>Cetak Laporan</p>
+            </a>
+          </li>
+          <!-- /. li-menu-cetak-laporan -->
+
+          <!-- menu-pengaturan-sistem -->
+          <li class="nav-item">
+
+            <!-- pengaturan sistem -->
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-gears"></i>
+              <p>Pengaturan Sistem<i class="fas fa-angle-left right"></i></p>
+            </a>
+            <!-- /. pengaturan sistem -->
+
+            <!-- nav-tree-pengaturan-sistem -->
+            <ul class="nav nav-treeview">
+
+              <!-- data jurusan -->
+              <li class="nav-item">
+                <a href="?page=jurusan" class="nav-link">
+                  <i class="fas fa-minus nav-icon"></i>
+                  <p>Data Jurusan</p>
+                </a>
+              </li>
+              <!-- /.data jurusan -->
+
+              <!-- data kelas -->
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fas fa-minus nav-icon"></i>
+                  <p>Data kelas</p>
+                </a>
+              </li>
+              <!-- ./data kelas -->
+
+              <!-- data tahun ajar -->
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fas fa-minus nav-icon"></i>
+                  <p>Data Tahun Ajar</p>
+                </a>
+              </li>
+              <!-- ./data tahun ajar -->
+
+              <!-- data jenis pembayaran -->
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fas fa-minus nav-icon"></i>
+                  <p>Data Jenis Pembayaran</p>
+                </a>
+              </li>
+              <!-- ./data jenis pembayaran -->
+
+            </ul>
+            <!-- nav-tree-pengaturan-sistem -->
+
+          </li>
+          <!-- ./menu-pengaturan-sistem -->
+
+          <!-- li-keluar -->
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-sign-out"></i>
+              <p>Keluar</p>
+            </a>
+          </li>
+          <!-- /. li-keluar -->
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

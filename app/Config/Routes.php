@@ -30,23 +30,23 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Dashboard::index');
-$routes->get('/dashboard', 'Dashboard::index');
-$routes->get('/dashboard/create', 'Dashboard::create');
-$routes->get('/dashboard/detail', 'Dashboard::detail');
-$routes->get('/dashboard/update', 'Dashboard::update');
-$routes->get('/dashboard/trash', 'Dashboard::trash');
-$routes->get('/dashboard/update/(:any)', 'Dashboard::update/$1');
-$routes->get('/dashboard/update/(:any)/(:any)', 'Dashboard::update/$1/$2');
-$routes->get('/dashboard/detail/(:any)', 'Dashboard::detail/$1');
-$routes->get('/dashboard/get_data_ajax', 'Dashboard::get_data_ajax');
-$routes->get('/dashboard/get_deleted_data_ajax', 'Dashboard::get_deleted_data_ajax');
+$routes->get('/data-siswa', 'SiswaController::index');
+$routes->get('/data-siswa/create', 'SiswaController::create');
+$routes->get('/data-siswa/detail', 'SiswaController::detail');
+$routes->get('/data-siswa/update', 'SiswaController::update');
+$routes->get('/data-siswa/trash', 'SiswaController::trash');
+$routes->get('/data-siswa/update/(:any)', 'SiswaController::update/$1');
+$routes->get('/data-siswa/update/(:any)/(:any)', 'SiswaController::update/$1/$2');
+$routes->get('/data-siswa/detail/(:any)', 'SiswaController::detail/$1');
+$routes->get('/data-siswa/get_data_ajax', 'SiswaController::get_data_ajax');
+$routes->get('/data-siswa/get_deleted_data_ajax', 'SiswaController::get_deleted_data_ajax');
 
 // action router
-$routes->post('/dashboard/create_data', 'Dashboard::create_data');
-$routes->post('/dashboard/update_data', 'Dashboard::update_data');
-$routes->post('/dashboard/soft_delete', 'Dashboard::soft_delete');
-$routes->post('/dashboard/recover_data', 'Dashboard::recover_data');
-$routes->get('/dashboard/export_excel', 'Dashboard::export_excel');
+$routes->post('/data-siswa/create-data', 'SiswaController::create_data');
+$routes->post('/data-siswa/update-data', 'SiswaController::update_data');
+$routes->post('/data-siswa/soft-delete', 'SiswaController::soft_delete');
+$routes->post('/data-siswa/recover-data', 'SiswaController::recover_data');
+$routes->get('/data-siswa/export-excel', 'SiswaController::export_excel');
 
 /*
  * --------------------------------------------------------------------
